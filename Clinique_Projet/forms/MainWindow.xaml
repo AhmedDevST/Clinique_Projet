@@ -1,0 +1,67 @@
+﻿<Window x:Class="Clinique_Projet.forms.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clinique_Projet"
+        mc:Ignorable="d"
+        Title="Login" Height="620" Width="1100" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/images/login.png"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.15*"/>
+            <ColumnDefinition Width="1.2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions >
+        <Border Grid.ColumnSpan="2" >
+            <Image x:Name="settings_con" Margin="10" Source="/images/icons8-settings-50.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="27" MouseDown="settings_con_MouseDown"/>
+
+
+        </Border>
+        <Border  Grid.Column="1" Background="#D8FFFFFF" Margin="40" CornerRadius="5" BorderThickness="1"
+                 BorderBrush="Gray" x:Name="login_form">
+            <Border.Effect>
+
+                <DropShadowEffect ShadowDepth="3" Color="Black" Opacity="0.5" BlurRadius="10" Direction="90"/>
+
+            </Border.Effect>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Se Connecter" Style="{StaticResource titleText}" Foreground="#FF8457EB" FontFamily="Trebuchet MS"></TextBlock>
+                <Canvas Width="393" Height="40" Margin="15 20 0 10 ">
+                    <Border BorderBrush="Black" BorderThickness="1,1,0,1" CornerRadius="5 0 0 5" x:Name="Picture">
+                        <Image Height="38" Source="/images/receptionniste (1).png"  Width="49" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" ></Image>
+                    </Border>
+                    <!--<Button Content="Secretaire"  Canvas.Left="50"  Height="40" Width="115" BorderBrush="Black" BorderThickness="0,1,1,1" Background="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" FontStyle="Italic" FontWeight="Medium" />-->
+                    <RadioButton  Content="Secretaire" x:Name="check_sect" Canvas.Left="45"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="96" Height="40" Checked="RadioButton_Checked" Cursor="Hand" Unchecked="RadioButton_Unchecked"/>
+                    <Border BorderBrush="Black" BorderThickness="1,1,0,1" CornerRadius="5 0 0 5"  HorizontalAlignment="Left" Canvas.Left="230" Height="40" x:Name="PictureM">
+                        <Image Height="38" Source="/images/docteur.png"  Width="49" Stretch="Fill" Canvas.Left="218" Canvas.Top="2" VerticalAlignment="Top" Margin="0,1,0,0" />
+
+                    </Border>
+                    <RadioButton  Content="Medecin" x:Name="check_med" Canvas.Left="277" HorizontalAlignment="Left" VerticalAlignment="Center" Width="96" Height="40" Checked="Medecin_Checked" Cursor="Hand"  Unchecked="Medecin_Unchecked"/>
+                </Canvas>
+                <TextBlock Text="Veuillez Saisir Vos Coordonnées" Style="{StaticResource normalText}" Foreground="#E57855CA" Margin="0 10 0 15" FontWeight="Bold"/>
+                <WrapPanel Width="auto" Height="50" Margin="15 0 0 0" HorizontalAlignment="Center">
+                    <TextBox x:Name="Matricule" HorizontalAlignment="Center" Style="{StaticResource TextBoxWithPlaceholder}" Width="350" BorderThickness="1,1,0,1" SelectionBrush="#FF12D700" SelectionOpacity="1"  Height="50" />
+                    <Border BorderThickness="0,1,1,1" BorderBrush="Gray" CornerRadius="0 3 3 0">
+                        <Image Source="/images/icons8-user-64.png" Width="25"/>
+                    </Border>
+                </WrapPanel>
+                <WrapPanel Width="auto" Height="50" Margin="15 30 0 0" HorizontalAlignment="Center">
+                    <PasswordBox x:Name="Password" HorizontalAlignment="Center" PreviewKeyDown="login_KeyDown" Style="{StaticResource PassBoxWithPlaceholder}" Height="50" Width="350" BorderThickness="1,1,0,1" />
+                    <Border BorderThickness="0,1,1,1" BorderBrush="Gray" CornerRadius="0 3 3 0">
+                        <Image Source="/images/icons8-locked.png" Width="25" />
+                    </Border>
+                </WrapPanel>
+                <Button Content="Connexion" Style="{StaticResource mainbutton}"  Background="#E57855CA" FontWeight="Bold" FontStretch="Expanded" FontSize="17" FontFamily="Times New Roman" Width="230" Height="55"  x:Name="login"  BorderThickness="2,2,2,2" ClickMode="Press" Click="login_Click" Cursor="Hand"/>
+            </StackPanel>
+
+        </Border>
+        <Border x:Name="Erreur" Grid.Column="1"  VerticalAlignment="Top" BorderThickness="2" CornerRadius="10,0,10,0" Padding="4" Margin="24,484,24,0" BorderBrush="#FFFC6060" Visibility="Hidden" Background="#FFFF5050" MouseDown="Erreur_MouseDown" Cursor="Hand" >
+            <WrapPanel Cursor="Hand">
+                <Image Source="C:\Users\pcNB2\source\repos\WpfApp6\WpfApp6\Image\fermer.png" Width="40" Cursor="Hand"/>
+                <TextBlock Foreground="White" x:Name="Erreur_msg" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Le mot de passe ou l'identifiant est inccorect" Margin="29,0,0,0" FontSize="14" FontStretch="Medium" FontStyle="Italic" FontWeight="Bold"/>
+            </WrapPanel>
+        </Border>
+    </Grid>
+</Window>

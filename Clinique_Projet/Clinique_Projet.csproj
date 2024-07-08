@@ -1,0 +1,306 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="accueil.png" />
+    <None Remove="Controlers\bg.png" />
+    <None Remove="Controlers\Capture_certificat.png" />
+    <None Remove="Controlers\est.png" />
+    <None Remove="Controlers\icons8-add-50 %283%29.png" />
+    <None Remove="Controlers\icons8-appointment-60.png" />
+    <None Remove="Controlers\icons8-delete-30.png" />
+    <None Remove="Controlers\icons8-edit-24.png" />
+    <None Remove="Controlers\icons8-load-50.png" />
+    <None Remove="Controlers\icons8-medical-certificate-64.png" />
+    <None Remove="Controlers\icons8-medical-certificate-66.png" />
+    <None Remove="Controlers\icons8-print-50 %281%29.png" />
+    <None Remove="Controlers\icons8-print-50 %282%29.png" />
+    <None Remove="Controlers\icons8-print-50.png" />
+    <None Remove="Controlers\information.png" />
+    <None Remove="Controlers\medicaments.png" />
+    <None Remove="Controlers\rendez-vous.png" />
+    <None Remove="Controlers\une-analyse.png" />
+    <None Remove="drogue.png" />
+    <None Remove="fermer.png" />
+    <None Remove="forms\accueil.png" />
+    <None Remove="forms\addPatient.png" />
+    <None Remove="forms\bg.png" />
+    <None Remove="forms\folder.png" />
+    <None Remove="forms\icons8-add-16.png" />
+    <None Remove="forms\icons8-add-48.png" />
+    <None Remove="forms\icons8-add-50 %281%29.png" />
+    <None Remove="forms\icons8-add-50 %282%29.png" />
+    <None Remove="forms\icons8-add-50.png" />
+    <None Remove="forms\icons8-add-administrator-80.png" />
+    <None Remove="forms\icons8-add-new-50.png" />
+    <None Remove="forms\icons8-add-new-64.png" />
+    <None Remove="forms\icons8-annuler-2-50.png" />
+    <None Remove="forms\icons8-camera-50.png" />
+    <None Remove="forms\icons8-cancel-50.png" />
+    <None Remove="forms\icons8-close-64.png" />
+    <None Remove="forms\icons8-delete-30.png" />
+    <None Remove="forms\icons8-dossier-50.png" />
+    <None Remove="forms\icons8-notification-50.png" />
+    <None Remove="forms\icons8-open-48.png" />
+    <None Remove="forms\icons8-phone-contact-80 %281%29.png" />
+    <None Remove="forms\icons8-reset-48.png" />
+    <None Remove="forms\icons8-sauvegarder-50.png" />
+    <None Remove="forms\icons8-select-checkmark-symbol-to-choose-true-answer-24.png" />
+    <None Remove="forms\icons8-window-other-50 %281%29.png" />
+    <None Remove="forms\pexels-ali-pazani-2613260.jpg" />
+    <None Remove="forms\secret-removebg-preview.png" />
+    <None Remove="forms\secret1-removebg-preview.png" />
+    <None Remove="icons8-additional-64.png" />
+    <None Remove="icons8-annuler-2-50.png" />
+    <None Remove="icons8-caduceus-50.png" />
+    <None Remove="icons8-consultation-64.png" />
+    <None Remove="icons8-contact-50.png" />
+    <None Remove="icons8-create-64.png" />
+    <None Remove="icons8-edit-64.png" />
+    <None Remove="icons8-email-50 %281%29.png" />
+    <None Remove="icons8-email-50.png" />
+    <None Remove="icons8-info-50.png" />
+    <None Remove="icons8-information-64.png" />
+    <None Remove="icons8-logout-50.png" />
+    <None Remove="icons8-medical-appointment-68.png" />
+    <None Remove="icons8-mises-à-jour-disponibles-50.png" />
+    <None Remove="icons8-people-50.png" />
+    <None Remove="icons8-print-50.png" />
+    <None Remove="images\3d-render-calendar-data-checklist-with-pencil.jpg" />
+    <None Remove="images\accueil.png" />
+    <None Remove="images\addPatient.png" />
+    <None Remove="images\admin-panel.png" />
+    <None Remove="images\ajouter-un-evenement %281%29.png" />
+    <None Remove="images\annuler_img.png" />
+    <None Remove="images\bouton-ajouter.png" />
+    <None Remove="images\calendar.png" />
+    <None Remove="images\calendar_3D.png" />
+    <None Remove="images\Capture_certificat.png" />
+    <None Remove="images\cc.png" />
+    <None Remove="images\certificat-medical.png" />
+    <None Remove="images\CLOSE.png" />
+    <None Remove="images\confirmation.png" />
+    <None Remove="images\data.png" />
+    <None Remove="images\discussion.png" />
+    <None Remove="images\docteur.png" />
+    <None Remove="images\dossier-medical.png" />
+    <None Remove="images\effacer %281%29.png" />
+    <None Remove="images\effacer.png" />
+    <None Remove="images\est.png" />
+    <None Remove="images\exit %281%29.png" />
+    <None Remove="images\folder.png" />
+    <None Remove="images\icons8-add-administrator-80.png" />
+    <None Remove="images\icons8-add-new-50.png" />
+    <None Remove="images\icons8-add-new-64.png" />
+    <None Remove="images\icons8-blood-sample-50.png" />
+    <None Remove="images\icons8-cancel-48.png" />
+    <None Remove="images\icons8-close-32.png" />
+    <None Remove="images\icons8-close-50.png" />
+    <None Remove="images\icons8-company-50.png" />
+    <None Remove="images\icons8-consultation-50.png" />
+    <None Remove="images\icons8-dashboard.png" />
+    <None Remove="images\icons8-drug-64.png" />
+    <None Remove="images\icons8-info-100.png" />
+    <None Remove="images\icons8-locked.png" />
+    <None Remove="images\icons8-logout-64.png" />
+    <None Remove="images\icons8-medical-file-32.png" />
+    <None Remove="images\icons8-menu-48.png" />
+    <None Remove="images\icons8-more-64.png" />
+    <None Remove="images\icons8-next-step-64.png" />
+    <None Remove="images\icons8-notification-50.png" />
+    <None Remove="images\icons8-phone-contact-80 (1).png" />
+    <None Remove="images\icons8-reset-48.png" />
+    <None Remove="images\icons8-sauvegarder-50.png" />
+    <None Remove="images\icons8-save-50.png" />
+    <None Remove="images\icons8-select-checkmark-symbol-to-choose-true-answer-24.png" />
+    <None Remove="images\icons8-settings-50.png" />
+    <None Remove="images\icons8-user-64.png" />
+    <None Remove="images\icons8-window-other-50 (1).png" />
+    <None Remove="images\images.jpeg" />
+    <None Remove="images\imprimante1.png" />
+    <None Remove="images\info.png" />
+    <None Remove="images\jaccepte.png" />
+    <None Remove="images\JSM_BG Graphics.png" />
+    <None Remove="images\login-page-img.png" />
+    <None Remove="images\login.png" />
+    <None Remove="images\main.png" />
+    <None Remove="images\modifier-loutil.png" />
+    <None Remove="images\notify.png" />
+    <None Remove="images\ordonnance.jpg" />
+    <None Remove="images\pin1.png" />
+    <None Remove="images\pngwing.png" />
+    <None Remove="images\pngwing1.png" />
+    <None Remove="images\pngwing2.png" />
+    <None Remove="images\rafraichir.png" />
+    <None Remove="images\receptionniste %281%29.png" />
+    <None Remove="images\recherche.png" />
+    <None Remove="images\rendez-vous-en-ligne.png" />
+    <None Remove="images\rendez-vous.png" />
+    <None Remove="images\se-deconnecter.png" />
+    <None Remove="images\secraitaire.jpg" />
+    <None Remove="images\secretaire.png" />
+    <None Remove="images\sticky-notes.png" />
+    <None Remove="images\succes.png" />
+    <None Remove="images\update.png" />
+    <None Remove="images\user-profile.png" />
+    <None Remove="images\[removal.ai]_tmp-64724febc1da8.png" />
+    <None Remove="logo_medical.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="forms\folder.png" />
+    <Resource Include="forms\icons8-close-64.png" />
+    <Resource Include="forms\icons8-notification-50.png" />
+    <Resource Include="forms\secret-removebg-preview.png" />
+    <Resource Include="forms\secret1-removebg-preview.png" />
+    <Resource Include="images\Capture_certificat.png" />
+    <Resource Include="images\images.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.5.2" />
+    <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+    <PackageReference Include="MaterialDesignInXamlToolkitAddOns" Version="0.0.6" />
+    <PackageReference Include="PDFsharp-WPF" Version="6.0.0-preview-2" />
+    <PackageReference Include="SqlTableDependency" Version="8.5.8" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.0-preview.2.23128.3" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0-preview.3.23174.8" />
+    <PackageReference Include="ToastNotifications.Messages.Net" Version="2.6.0" />
+    <PackageReference Include="ToastNotifications.Net" Version="2.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Controlers\bg.png" />
+    <Resource Include="Controlers\Capture_certificat.png" />
+    <Resource Include="Controlers\est.png" />
+    <Resource Include="Controlers\icons8-add-50 (3).png" />
+    <Resource Include="Controlers\icons8-appointment-60.png" />
+    <Resource Include="Controlers\icons8-delete-30.png" />
+    <Resource Include="Controlers\icons8-edit-24.png" />
+    <Resource Include="Controlers\icons8-load-50.png" />
+    <Resource Include="Controlers\icons8-medical-certificate-64.png" />
+    <Resource Include="Controlers\icons8-medical-certificate-66.png" />
+    <Resource Include="Controlers\icons8-print-50 (1).png" />
+    <Resource Include="Controlers\icons8-print-50 (2).png" />
+    <Resource Include="Controlers\icons8-print-50.png" />
+    <Resource Include="Controlers\information.png" />
+    <Resource Include="Controlers\medicaments.png" />
+    <Resource Include="Controlers\rendez-vous.png" />
+    <Resource Include="Controlers\une-analyse.png" />
+    <Resource Include="drogue.png" />
+    <Resource Include="forms\bg.png" />
+    <Resource Include="forms\icons8-add-16.png" />
+    <Resource Include="forms\icons8-add-48.png" />
+    <Resource Include="forms\icons8-add-50 (1).png" />
+    <Resource Include="forms\icons8-add-50 (2).png" />
+    <Resource Include="forms\icons8-add-50.png" />
+    <Resource Include="forms\icons8-camera-50.png" />
+    <Resource Include="forms\icons8-cancel-50.png" />
+    <Resource Include="forms\icons8-delete-30.png" />
+    <Resource Include="forms\icons8-dossier-50.png" />
+    <Resource Include="forms\icons8-open-48.png" />
+    <Resource Include="forms\pexels-ali-pazani-2613260.jpg" />
+    <Resource Include="images\admin-panel.png" />
+    <Resource Include="images\ajouter-un-evenement (1).png" />
+    <Resource Include="images\bouton-ajouter.png" />
+    <Resource Include="images\data.png" />
+    <Resource Include="images\docteur.png" />
+    <Resource Include="images\effacer (1).png" />
+    <Resource Include="images\exit (1).png" />
+    <Resource Include="images\folder.png" />
+    <Resource Include="images\icons8-blood-sample-50.png" />
+    <Resource Include="images\icons8-cancel-48.png" />
+    <Resource Include="images\icons8-close-50.png" />
+    <Resource Include="images\icons8-company-50.png" />
+    <Resource Include="images\icons8-dashboard.png" />
+    <Resource Include="images\icons8-drug-64.png" />
+    <Resource Include="images\icons8-info-100.png" />
+    <Resource Include="images\icons8-locked.png" />
+    <Resource Include="images\icons8-menu-48.png" />
+    <Resource Include="images\icons8-more-64.png" />
+    <Resource Include="images\icons8-next-step-64.png" />
+    <Resource Include="images\icons8-notification-50.png" />
+    <Resource Include="images\icons8-save-50.png" />
+    <Resource Include="images\icons8-settings-50.png" />
+    <Resource Include="images\icons8-user-64.png" />
+    <Resource Include="images\imprimante1.png" />
+    <Resource Include="images\info.png" />
+    <Resource Include="images\jaccepte.png" />
+    <Resource Include="images\JSM_BG Graphics.png" />
+    <Resource Include="images\login.png" />
+    <Resource Include="images\modifier-loutil.png" />
+    <Resource Include="images\notify.png" />
+    <Resource Include="images\Ordonnance.jpg" />
+    <Resource Include="images\pin1.png" />
+    <Resource Include="images\pngwing2.png" />
+    <Resource Include="images\pngwing.png" />
+    <Resource Include="images\pngwing1.png" />
+    <Resource Include="images\rafraichir.png" />
+    <Resource Include="images\receptionniste (1).png" />
+    <Resource Include="images\secraitaire.jpg" />
+    <Resource Include="images\3d-render-calendar-data-checklist-with-pencil.jpg" />
+    <Resource Include="images\calendar_3D.png" />
+    <Resource Include="images\confirmation.png" />
+    <Resource Include="images\CLOSE.png" />
+    <Resource Include="images\cc.png" />
+    <Resource Include="images\icons8-close-32.png" />
+    <Resource Include="images\icons8-consultation-50.png" />
+    <Resource Include="images\icons8-logout-64.png" />
+    <Resource Include="images\icons8-medical-file-32.png" />
+    <Resource Include="images\login-page-img.png" />
+    <Resource Include="images\secretaire.png" />
+    <Resource Include="images\sticky-notes.png" />
+    <Resource Include="images\succes.png" />
+    <Resource Include="images\calendar.png" />
+    <Resource Include="images\certificat-medical.png" />
+    <Resource Include="images\discussion.png" />
+    <Resource Include="images\dossier-medical.png" />
+    <Resource Include="images\effacer.png" />
+    <Resource Include="images\est.png" />
+    <Resource Include="images\fermer.png" />
+    <Resource Include="images\icons8-additional-64.png" />
+    <Resource Include="images\icons8-caduceus-50.png" />
+    <Resource Include="images\icons8-consultation-64.png" />
+    <Resource Include="images\icons8-contact-50.png" />
+    <Resource Include="images\icons8-create-64.png" />
+    <Resource Include="images\icons8-edit-64.png" />
+    <Resource Include="images\icons8-email-50 %281%29.png" />
+    <Resource Include="images\icons8-email-50.png" />
+    <Resource Include="images\icons8-info-50.png" />
+    <Resource Include="images\icons8-information-64.png" />
+    <Resource Include="images\icons8-logout-50.png" />
+    <Resource Include="images\icons8-medical-appointment-68.png" />
+    <Resource Include="images\icons8-mises-à-jour-disponibles-50.png" />
+    <Resource Include="images\icons8-people-50.png" />
+    <Resource Include="images\icons8-print-50.png" />
+    <Resource Include="images\accueil.png" />
+    <Resource Include="images\addPatient.png" />
+    <Resource Include="images\icons8-add-administrator-80.png" />
+    <Resource Include="images\icons8-add-new-50.png" />
+    <Resource Include="images\icons8-add-new-64.png" />
+    <Resource Include="images\annuler_img.png" />
+    <Resource Include="images\icons8-phone-contact-80 (1).png" />
+    <Resource Include="images\icons8-reset-48.png" />
+    <Resource Include="images\icons8-sauvegarder-50.png" />
+    <Resource Include="images\icons8-select-checkmark-symbol-to-choose-true-answer-24.png" />
+    <Resource Include="images\icons8-window-other-50 (1).png" />
+    <Resource Include="images\logo_medical.jpg" />
+    <Resource Include="images\main.png" />
+    <Resource Include="images\recherche.png" />
+    <Resource Include="images\rendez-vous-en-ligne.png" />
+    <Resource Include="images\rendez-vous.png" />
+    <Resource Include="images\se-deconnecter.png" />
+    <Resource Include="images\update.png" />
+    <Resource Include="images\user-profile.png" />
+    <Resource Include="images\[removal.ai]_tmp-64724febc1da8.png" />
+  </ItemGroup>
+
+</Project>

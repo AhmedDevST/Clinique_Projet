@@ -1,0 +1,246 @@
+﻿<Window x:Class="Clinique_Projet.forms.Nouveau_User"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clinique_Projet.forms"
+        mc:Ignorable="d"
+       Title="Nouveau Utilisateur" Height="550" MinHeight="550"  MinWidth="1150" Width="1150" WindowStartupLocation="CenterScreen">
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="/images/est.png" Viewport="0,0,250,250" ViewportUnits="Absolute" TileMode="Tile" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <!-- header-->
+        <Border Grid.Row="0" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <TextBlock Text="Nouveau Utilisateur"
+                       Padding="9" Foreground="Black" FontSize="22" FontWeight="SemiBold"
+                       VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Border>
+        <!-- main-->
+        <Border Grid.Row="1" Padding="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition  Width="300"/>
+                </Grid.ColumnDefinitions>
+                <!-- info personnellle de utilisateur-->
+                <Border Grid.Column="0">
+                    <Grid Background="#99FFFFFF" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <!-- nom-->
+                        <Border Grid.Column="0" Grid.Row="0" Padding="6"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <TextBlock Text="Nom " Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                                <TextBox Margin="0 5 0 0"
+                             Tag="Nom du Utilisateur"  x:Name="Nom_user"
+                             Style="{StaticResource textName}" TextChanged="Nom_user_TextChanged"   />
+                                <TextBlock x:Name="RemarqueNom" Margin="0 3 0 0"
+                               Style="{StaticResource ErrorTextStyle}"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- prenom-->
+                        <Border Grid.Column="2" Grid.Row="0" Padding="6"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <TextBlock Text="Prénom" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                                <TextBox Margin="0 5 0 0" x:Name="prenom_user"
+                             Tag="Prénom du utilisateur" 
+                             Style="{StaticResource textName}" TextChanged="prenom_user_TextChanged"   />
+                                <TextBlock x:Name="RemarquePrenom" Margin="0 3 0 0"
+                               Style="{StaticResource ErrorTextStyle}"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- CIN-->
+                        <Border Grid.Column="0" Grid.Row="1" Padding="6"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <TextBlock Text="CIN " Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                                <TextBox Margin="0 5 0 0"
+                             Tag="CIN du utilisateur" x:Name="CIN_user"
+                             Style="{StaticResource textName}" TextChanged="CIN_user_TextChanged" />
+                                <TextBlock x:Name="RemarqueCIN" Margin="0 3 0 0"
+                               Style="{StaticResource ErrorTextStyle}"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- mobile-->
+                        <Border Grid.Column="2" Grid.Row="1" Padding="6"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <TextBlock Text="téléphone " Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                                <TextBox Margin="0 5 0 0"
+                             Tag="téléphone du utilisateur" x:Name="phone_user"
+                             Style="{StaticResource textName}" TextChanged="phone_user_TextChanged"  />
+                                <TextBlock x:Name="RemarquePhone" Margin="0 3 0 0"
+                               Style="{StaticResource ErrorTextStyle}"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- email-->
+                        <Border Grid.Column="0" Grid.Row="2" Padding="6"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <TextBlock Text="Email" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                                <TextBox Margin="0 5 0 0"
+                             Tag="Email du utilisateur"  x:Name="email_user"
+                             Style="{StaticResource textName}" TextChanged="email_user_TextChanged"  />
+                                <TextBlock x:Name="RemarqueEmail" Margin="0 3 0 0"
+                               Style="{StaticResource ErrorTextStyle}"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- logo-->
+                        <Border Grid.Column="2" Grid.Row="2" Padding="6"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <TextBlock Text="Photo" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="120"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox  Grid.Column="0" Margin="0 5 0 0" x:Name="photo_user"
+                                      IsEnabled="False"
+                                     Style="{StaticResource textName}"  />
+                                    <Button Content="Browse" Grid.Column="1" x:Name="btn_photo_user" Margin="0 5 0 0" Click="btn_photo_user_Click"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                        <!-- role-->
+                        <Border Grid.Column="0" Grid.Row="3"  Padding="6"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <TextBlock Text="Role" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                                <ComboBox  SelectedIndex="0" x:Name="combox_role"
+                                FontSize="13"
+                                Style="{DynamicResource theComboBox}"
+                                Height="35"  Margin="0 5 0 0"
+                                ItemContainerStyle="{DynamicResource theComboBoxItem}" DropDownClosed="combox_role_DropDownClosed" >
+
+                                </ComboBox>
+                            </StackPanel>
+                        </Border>
+                        <!-- diplome pour la role:medcine-->
+                        <Border   x:Name="Border_diplome" Visibility="Collapsed" Grid.Column="2" Grid.Row="3" Padding="6"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <TextBlock Text="Diplome de medcine" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                                <TextBox Margin="0 5 0 0"
+                             Tag="Entrer ici le diplome  du medcine"  x:Name="diplome_user_medcine"
+                             Style="{StaticResource textName}"  />
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                </Border>
+                <!-- info authentification-->
+                <Border Grid.Column="2">
+                    <Grid Background="#99FFFFFF" Width="Auto" Height="Auto"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <!-- username-->
+                        <Border  Grid.Row="0" Padding="6"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <TextBlock Text="Username " Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                                <TextBox Margin="0 5 0 0"
+                             Tag="Entrer ici username de utilisateur"  x:Name="username"
+                             Style="{StaticResource textName}" TextChanged="username_TextChanged"   />
+                                <TextBlock x:Name="Remarque_username" Margin="0 3 0 0"
+                               Style="{StaticResource ErrorTextStyle}"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- password-->
+                        <Border  Grid.Row="1" Padding="6"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <TextBlock Text="mot de passse" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                                <TextBox Margin="0 5 0 0" x:Name="password_user" Tag="Entrer ici le mot de passe"
+                             Style="{StaticResource textName}" TextChanged="password_user_TextChanged"   />
+                                <TextBlock x:Name="Remarque_password" Margin="0 3 0 0" Text="le mot de passse doit contenir au moins  6 caracteres"
+                               Style="{StaticResource ErrorTextStyle}"/>
+                            </StackPanel>
+                        </Border>
+                        <!-- activer le compte-->
+                        <Border  Grid.Row="2"  Padding="6"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <TextBlock Text="Status de compte" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                                <ComboBox  SelectedIndex="0" x:Name="combox_Activer_compte"
+                                FontSize="13"
+                                Style="{DynamicResource theComboBox}"
+                                Height="35"  Margin="0 5 0 0"
+                                ItemContainerStyle="{DynamicResource theComboBoxItem}">
+
+                                </ComboBox>
+                            </StackPanel>
+                        </Border>
+
+                    </Grid>
+
+                </Border>
+            </Grid>
+
+        </Border>
+
+        <!-- footer-->
+        <!-- btn-->
+        <Border Grid.Row="2" Padding="15"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+            <StackPanel  Width="300"  Orientation="Horizontal" Height=" 60" HorizontalAlignment="Right"
+                                VerticalAlignment="Center">
+                <Border BorderThickness="1" BorderBrush="Transparent" Margin="0 0 10 0" Height="35" Width="140" CornerRadius="8" HorizontalAlignment="Right"
+                        VerticalAlignment="Center" Grid.Column="2" Background="#FFFF4646" Style="{StaticResource image}">
+
+                    <Button  Canvas.Left="430" Canvas.Top="5"  Background="Transparent" FontFamily="Cambria Math" FontSize="13" 
+                                    FontWeight="Bold" Foreground="White" BorderThickness="0" Height="33" VerticalAlignment="Center" 
+                              Style="{StaticResource hover}" HorizontalAlignment="Right" Width="138" Click="Button_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/images/annuler_img.png" Height="16" Width="26" Margin="0 0 4 0"/>
+                            <TextBlock Text="Annuler"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+                <Border Height="35" Width="140" CornerRadius="8" HorizontalAlignment="Right" Style="{StaticResource image}"
+                        VerticalAlignment="Center" Grid.Column="1" Background="#FF5AAAFF" BorderThickness="1" BorderBrush="Transparent">
+                    <Button   Canvas.Left="430" Canvas.Top="5"  Background="Transparent" Foreground="White" FontFamily="Cambria Math" FontSize="13" FontWeight="Bold" BorderThickness="0"
+                                x:Name="Confirmer" Style="{StaticResource hover}" Click="Confirmer_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/images/icons8-sauvegarder-50.png" Height="16" Width="26" Margin="0 0 4 0"/>
+                            <TextBlock Text="Enregistrer"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>

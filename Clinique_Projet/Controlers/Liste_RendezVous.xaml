@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Clinique_Projet.Controlers.Liste_RendezVous"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Clinique_Projet.Controlers"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1200" Background="Transparent">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal" Margin="15 0 0 0">
+            
+            <TextBox  Grid.Column="0" x:Name="mytext"  Canvas.Top="15"  Canvas.Left="20" Style="{StaticResource search}"  
+                      Tag="Chercher en Nom,Prenom,Date,Type" TextWrapping="Wrap" Width="255" Height="30" TextChanged="mytext_TextChanged">
+               
+            </TextBox>
+            <Border BorderThickness="0 1 1 1" Height="30" CornerRadius="0 3 3 0" BorderBrush="#666664" x:Name="search">
+                <Image Source="/images/recherche.png" Width="30"/>
+            </Border>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" Style="{DynamicResource DataGridStyle1}" x:Name="datagrid1" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
+                             Height="Auto"  >
+            <DataGrid.Background>
+                <ImageBrush ImageSource="/images/est.png" Viewport="0,0,200,200" ViewportUnits="Absolute" TileMode="Tile" />
+            </DataGrid.Background>
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="#" Width="*" IsReadOnly="True" Visibility="Collapsed" Binding="{Binding id}"/>
+                <DataGridTextColumn Header="Nom" Width="*" IsReadOnly="True" Binding="{Binding nom}"/>
+                <DataGridTextColumn Header="Prenom" Width="*" IsReadOnly="True" Binding="{Binding prenom}"/>
+                <DataGridTextColumn Header="Type" Width="*" IsReadOnly="True" Binding="{Binding type}"/>
+                <DataGridTextColumn Header="Sexe" Width="*" IsReadOnly="True" Binding="{Binding sexe}"/>
+                <DataGridTextColumn Header="Date" Width="*" IsReadOnly="True"  Binding="{Binding date, StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTemplateColumn Header="Action" IsReadOnly="True" Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <!-- update RDV-->
+                                <Button   
+                                            Style="{StaticResource editbtn}" Height="25" Width="25" Margin="0,0,5,0" Click="Button_Click">
+                                    <Button.ToolTip>
+                                        <ToolTip>Modifier</ToolTip>
+                                    </Button.ToolTip>
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/images/update.png"/>
+                                    </Button.Background>
+
+                                </Button>
+                                <!-- delete rendez vous-->
+                                <Button   
+                                        Style="{StaticResource editbtn}" Height="25" Width="25" Margin="0,0,5,0" Click="Button_Click_1">
+                                    <Button.ToolTip>
+                                        <ToolTip>Supprimer</ToolTip>
+                                    </Button.ToolTip>
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/images/effacer.png"/>
+                                    </Button.Background>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

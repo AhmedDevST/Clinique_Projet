@@ -1,0 +1,113 @@
+﻿<Window x:Class="Clinique_Projet.forms.Acceuil"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clinique_Projet.forms"
+        mc:Ignorable="d"
+        Title="Acceuil" ResizeMode="CanResize" Height="940" Width="1400" WindowStartupLocation="CenterScreen" WindowState="Maximized"  Closing="Window_Closing" Loaded="Window_Loaded">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220" x:Name="aside"></ColumnDefinition>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+      
+            <Grid.Background>
+                <ImageBrush ImageSource="/images/est.png" Viewport="0,0,250,250" ViewportUnits="Absolute" TileMode="Tile" />
+            </Grid.Background>
+        
+        <Border Background="#FF8F7DEB"  x:Name="sidebare" Style="{StaticResource image}" CornerRadius="0 0 0 0">
+            <Border>
+                <Border.Background>
+                    <ImageBrush ImageSource="/images/pngwing2.png"/>
+                </Border.Background>
+                <Grid  x:Name="Menu">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+            </Grid.RowDefinitions>
+              <Border >
+
+                    <Image Source="/images/calendar_3D.png" ></Image>
+
+            </Border>
+            <StackPanel Orientation="Vertical" Grid.Row="1" VerticalAlignment="Center" >
+
+                <Border  Height="45" x:Name="First"   Background="Transparent" MouseDown="Border_MouseDown">
+                    <StackPanel  Orientation="Horizontal"   Style="{StaticResource stackP}"
+                                 x:Name="test" MouseDown="test_MouseDown" MouseEnter="test_MouseEnter" MouseLeave="test_MouseLeave" >
+                        <Image Source="/images/icons8-add-new-64.png" Width="30" Opacity="0.8"></Image>
+                        <TextBlock Text="Rendez Vous"  Margin="20 0 0 0"  VerticalAlignment="Center" Style="{StaticResource button_menu}"></TextBlock>
+                            <Image Source="/images/pin1.png" Margin="40 0 0 5" x:Name="test_pin" Visibility="Hidden"/>
+                        </StackPanel>
+                </Border>
+                <Border  Height="45"   Background="Transparent">
+                    <StackPanel  Orientation="Horizontal" Margin="10 0 10 0" Style="{StaticResource stackP}" x:Name="patient" MouseEnter="patient_MouseEnter" MouseLeave="patient_MouseLeave" MouseDown="patient_MouseDown">
+                        <Image Source="/images/icons8-people-50.png" Width="30"></Image>
+                        <TextBlock Text="Patients"  Margin="20 0 0 0"  VerticalAlignment="Center" Style="{StaticResource button_menu}" FocusVisualStyle="{x:Null}" ></TextBlock>
+                            <Image Source="/images/pin1.png"  Margin="65 0 0 5" x:Name="patient_pin" Visibility="Hidden"/>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="Third" Height="45"    Background="Transparent">
+                    <StackPanel  Orientation="Horizontal" Style="{StaticResource stackP}" x:Name="consultation" MouseEnter="consultation_MouseEnter" MouseLeave="consultation_MouseLeave" MouseDown="consultation_MouseDown"    >
+                            <Image Source="/images/icons8-consultation-50.png" Width="40" Margin="-2 0 0 0"></Image>
+                        <TextBlock Text="Consultations"  Margin="14 0 0 0"  VerticalAlignment="Center" Style="{StaticResource button_menu}" FocusVisualStyle="{x:Null}"></TextBlock>
+                            <Image Source="/images/pin1.png" Margin="28 0 0 5" x:Name="consultation_pin" Visibility="Hidden"/>
+
+                        </StackPanel>
+                </Border>
+                <Border x:Name="Fourth" Height="45"   Background="Transparent">
+                    <StackPanel  Orientation="Horizontal" Style="{StaticResource stackP}" x:Name="certificat" MouseEnter="certificat_MouseEnter" 
+                                 MouseLeave="certificat_MouseLeave" MouseDown="certificat_MouseDown">
+                        <Image Source="/images/icons8-medical-file-32.png" Width="35" Margin="-5 0 0 0"></Image>
+                        <TextBlock Text="Certificats de Maladies"  Width="141"  VerticalAlignment="Center" Style="{StaticResource button_menu}" FocusVisualStyle="{x:Null}" ></TextBlock>
+                            <Image Source="/images/pin1.png" Margin="-3 0 0 5" x:Name="certificat_pin" Visibility="Hidden"/>
+
+                        </StackPanel>
+                </Border>
+                <Border  Height="45"  Background="Transparent" VerticalAlignment="Center" x:Name="Fifth" >
+                    <StackPanel  Orientation="Horizontal" Style="{StaticResource stackP}" x:Name="disconnect" MouseEnter="disconnect_MouseEnter" MouseLeave="disconnect_MouseLeave" MouseDown="disconnect_MouseDown">
+                        <Image Source="/images/icons8-logout-64.png" Width="30"></Image>
+                        <TextBlock Text="Déconnexion"  Margin="20 0 0 0"  VerticalAlignment="Center" Style="{StaticResource button_menu}" FocusVisualStyle="{x:Null}" FontFamily="Cambria Math"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+                    <Border Grid.Row="2">
+                        <Image  Source="/forms/secret1-removebg-preview.png" />
+                    </Border>
+                </Grid>
+            </Border>
+        </Border>
+        <!--  <StackPanel Margin="0,209,0,222" HorizontalAlignment="Center" Width="215" Background="AliceBlue">
+
+           
+            <Canvas  ToolTip="Gestion des Patients" Height="60">
+
+                <Image Source="C:\Users\pcNB2\source\repos\WpfApp6\WpfApp6\Image\dossier-medical.png" Width="40" Height="40" Canvas.Left="10" Canvas.Top="10"></Image>
+                <TextBlock Text="Patients" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" FontFamily="Times New Roman" Canvas.Left="79" Canvas.Top="21"></TextBlock>
+
+            </Canvas>
+            <Canvas  ToolTip="Gestion des Consultations" Height="60" MouseMove="Canvas_MouseMove" x:Name="teste">
+
+                <Image Source="C:\Users\pcNB2\source\repos\WpfApp6\WpfApp6\Image\discussion.png" Width="40" Height="40" Canvas.Left="10" Canvas.Top="10"></Image>
+                <TextBlock Text="Consultations" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" FontFamily="Times New Roman" Canvas.Left="79" Canvas.Top="21"></TextBlock>
+
+            </Canvas>
+            <Canvas ToolTip="Certificats Medicales" Height="60">
+
+                <Image Source="C:\Users\pcNB2\source\repos\WpfApp6\WpfApp6\Image\certificat-medical.png" Width="40" Height="40" Canvas.Left="10" Canvas.Top="10"></Image>
+                <TextBlock Text="Certificats Medicales" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" FontFamily="Times New Roman" Canvas.Left="55" Canvas.Top="21" HorizontalAlignment="Left" Width="141" ></TextBlock>
+
+            </Canvas>
+        </StackPanel>-->
+        <Grid Grid.Column="1" x:Name="controler"  VerticalAlignment="Stretch">
+            
+
+        </Grid>
+
+
+    </Grid>
+</Window>

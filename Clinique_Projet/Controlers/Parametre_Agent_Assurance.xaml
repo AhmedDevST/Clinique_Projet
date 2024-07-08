@@ -1,0 +1,134 @@
+﻿<UserControl x:Class="Clinique_Projet.Controlers.Parametre_Agent_Assurance"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Clinique_Projet.Controlers"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Padding="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- header-->
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Padding="15 0 0 5"  >
+                    <TextBlock Text=" Paramètres / Agences d'assurance "
+                       Foreground="Black" FontSize="22" FontWeight="SemiBold"
+                       VerticalAlignment="Center" HorizontalAlignment="Left" />
+                </Border>
+                <Border Grid.Row="1" Background="Gray" CornerRadius="3" />
+            </Grid>
+            <!--main-->
+            <Border  Padding="20" Grid.Row="1" >
+                <!-- main -->
+                <Grid Background="#99FFFFFF" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="500" MaxWidth="500"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="45"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <!-- list  -->
+                            <Border   Grid.Row="1"  Margin="10" >
+                                <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="datagrid_Assurance" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
+                                                    Margin="21,10,4,20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Type d'assurance" Width="*" IsReadOnly="True" Binding="{Binding NomAssurance}"/>
+                                        <DataGridTemplateColumn Header="" IsReadOnly="True" Width="Auto">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <!-- afficher -->
+                                                        <Button   
+                                                                        Style="{StaticResource addConslut}" x:Name="show_Assurance" Height="30" Width="38" Margin="0,0,5,0" Click="show_Assurance_Click" >
+                                                            <Button.ToolTip>
+                                                                <ToolTip>info</ToolTip>
+                                                            </Button.ToolTip>
+                                                            <Image  Height="20" VerticalAlignment="Center" Width="40" Source="\images\icons8-info-50.png" HorizontalAlignment="Center"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="center" Background="#348EF6" ResizeBehavior="PreviousAndNext" />
+                    <!-- ajouter -->
+                    <Border Grid.Column="2" Padding="6">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <!-- Nom-->
+                            <Border  Grid.Row="0"  VerticalAlignment="Stretch"
+                                           HorizontalAlignment="Stretch">
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <TextBlock Text="Agent d'assurance" Margin="0 10 0 0"
+                                             Style="{StaticResource TextBlockStyle}"/>
+                                    <TextBox Margin="0 5 0 0" Tag="Eneter ici le nom d'agent d'assurance"
+                                                x:Name="Nom_Assurance" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                                              Style="{StaticResource textName}"  />
+                                    <TextBlock x:Name="Remarque_TypeAnalyse" Margin="0 3 0 0"
+                                                 Style="{StaticResource ErrorTextStyle}" Text=""/>
+                                </StackPanel>
+
+                            </Border>
+                            <WrapPanel  Grid.Row="1" HorizontalAlignment="Right" >
+                                <!-- annuler btn-->
+                                <Button  Width="100" Margin="10 0 0 5"
+                                            Style="{StaticResource SecondaryButtonStyle}"  x:Name="Annuler_assurance_btn" Click="Annuler_assurance_btn_Click" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/annuler_img.png"/>
+                                        <TextBlock Text="Annuler"/>
+                                    </StackPanel>
+                                </Button>
+                                <!-- delete btn-->
+                                <Button  Width="105" Margin="10 0 0 5"
+                                            Style="{StaticResource DangerButtonStyle}"  x:Name="Delete_assurance_btn" Click="Delete_assurance_btn_Click" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/effacer (1).png"/>
+                                        <TextBlock Text="Supprimer"/>
+                                    </StackPanel>
+                                </Button>
+                                <!-- edit-->
+                                <Button  Width="100" Margin="10 0 0 5"
+                                             Style="{StaticResource InfoButtonStyle}"  x:Name="Edit_assurance_btn" Click="Edit_assurance_btn_Click" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/modifier-loutil.png"/>
+                                        <TextBlock Text="Modifer"/>
+                                    </StackPanel>
+                                </Button>
+                                <!--add-->
+                                <Button  Width="100"  Margin="10 0 0 5"
+                                            Style="{StaticResource PrimaryButtonStyle}"  x:Name="Add_assurance_btn" Click="Add_assurance_btn_Click"  >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/icons8-add-new-64.png"/>
+                                        <TextBlock Text="Ajouter"/>
+                                    </StackPanel>
+                                </Button>
+                            </WrapPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+
+</UserControl>

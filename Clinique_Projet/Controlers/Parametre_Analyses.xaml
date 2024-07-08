@@ -1,0 +1,542 @@
+﻿<UserControl x:Class="Clinique_Projet.Controlers.Parametre_Analyses"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Clinique_Projet.Controlers"
+             mc:Ignorable="d" 
+     d:DesignHeight="550" d:DesignWidth="900" Background="Transparent">
+    <Border Padding="10">
+       
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!-- header-->
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Padding="15 0 0 5"  >
+                    <TextBlock Text="Paramètres des Analyses"
+                       Foreground="Black" FontSize="22" FontWeight="SemiBold"
+                       VerticalAlignment="Center" HorizontalAlignment="Left" />
+                </Border>
+                <Border Grid.Row="1" Background="Gray" CornerRadius="3" />
+            </Grid>
+            <!--main-->
+            <Border  Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="17">
+                <TabControl   Style="{StaticResource TabControlStyle}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <!-- les Analyses-->
+                    <TabItem Header="Analyses" Width="200" Style="{StaticResource tabItemStyle}">
+                        <Border Padding="10" >
+                            <!-- main Analyse-->
+                            <Grid Background="#99FFFFFF" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="500" MaxWidth="500"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                        <!--filter-->
+                                        <Border Padding="5 20 5 0" Grid.Row="0">
+                                            <WrapPanel>
+                                                <!--type analyse-->
+                                                <StackPanel Margin="10 0 0 5 " Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <TextBlock Text="Type d'Analyse" Margin="0 0 0 0"
+                                             Style="{StaticResource TextBlockStyle}"/>
+                                                    <ComboBox  x:Name="comboboxType_Analyse_Search"
+                                                    FontSize="13" Width="300"
+                                                    Style="{DynamicResource theComboBox}"
+                                                    Height="35"  Margin="0 5 0 0" 
+                                                    ItemContainerStyle="{DynamicResource theComboBoxItem}" DropDownClosed="comboboxType_Analyse_Search_DropDownClosed" >
+                                                    </ComboBox>
+                                                </StackPanel>
+                                                <!--analyse-->
+                                                <StackPanel Margin="10 0 0 5 "  Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <TextBlock Text="Analyse" Margin="0 0 0 5"
+                                                      Style="{StaticResource TextBlockStyle}"/>
+                                                    <TextBox   x:Name="Text_Search_Analyse" Style="{StaticResource textName}" Tag="Entrer ici le nom d'Analyse" TextWrapping="Wrap" Width="300" Height="35" TextChanged="Text_Search_Analyse_TextChanged"  />
+                                                </StackPanel>
+                                            </WrapPanel>
+                                        </Border>
+                                        <!-- list de analyse -->
+                                            <Border   Grid.Row="1"  Margin="10" Background="Transparent">
+                                                <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="datagrid_Analyse" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
+                                                    Margin="21,10,4,20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <DataGrid.Columns>
+                                                        <DataGridTextColumn Header="Analyse" Width="*" IsReadOnly="True" Binding="{Binding NomAnalyse}"/>
+                                                        <DataGridTextColumn Header="Type de Analyse" Width="*" IsReadOnly="True" Binding="{Binding TypeAnalyse}"/>
+                                                        <DataGridTemplateColumn Header="" IsReadOnly="True" Width="Auto">
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <!-- afficher -->
+                                                                        <Button   
+                                                                        Style="{StaticResource addConslut}" x:Name="show_analyse" Height="30" Width="38" Margin="0,0,5,0" Click="show_analyse_Click">
+                                                                            <Button.ToolTip>
+                                                                                <ToolTip>info</ToolTip>
+                                                                            </Button.ToolTip>
+                                                                            <Image  Height="20" VerticalAlignment="Center" Width="40" Source="\images\icons8-info-50.png" HorizontalAlignment="Center"/>
+                                                                        </Button>
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+
+                                                    </DataGrid.Columns>
+                                                </DataGrid>
+
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                    <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="center" Background="#348EF6" ResizeBehavior="BasedOnAlignment" />
+                                    <!-- ajouter un analyse-->
+                                    <Border Grid.Column="2" Padding="6">
+                                        <Grid >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                            <!-- Type d' ananlyse -->
+                                            <Border  Grid.Row="0"   VerticalAlignment="Stretch"
+                                         HorizontalAlignment="Stretch">
+                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <TextBlock Text="Type de bilans" Margin="0 10 0 0"
+                                             Style="{StaticResource TextBlockStyle}"/>
+                                                    <ComboBox  x:Name="comboboxType_Analyse"
+                                                FontSize="13" 
+                                                Style="{DynamicResource theComboBox}"
+                                                Height="35"  Margin="0 5 0 15"
+                                                ItemContainerStyle="{DynamicResource theComboBoxItem}" >
+                                                    </ComboBox>
+                                                </StackPanel>
+                                            </Border>
+                                            <!-- Nom Analyse-->
+                                            <Border  Grid.Row="1"  VerticalAlignment="Stretch"
+                                           HorizontalAlignment="Stretch">
+                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <TextBlock Text="Nom d'Analyse" Margin="0 10 0 0"
+                                             Style="{StaticResource TextBlockStyle}"/>
+                                                    <TextBox Margin="0 5 0 0" Tag="Eneter ici le nom Analyse"
+                                                x:Name="Nom_Analyse" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                                              Style="{StaticResource textName}"  />
+                                                    <TextBlock x:Name="Remarque_NomAnalyse" Margin="0 3 0 0"
+                                                 Style="{StaticResource ErrorTextStyle}" Text=""/>
+                                                </StackPanel>
+
+                                            </Border>
+                                        <WrapPanel  Grid.Row="2" HorizontalAlignment="Right" >
+                                            <!-- annuler btn-->
+                                            <Button  Width="100" Margin="10 0 0 5"
+                                         Style="{StaticResource SecondaryButtonStyle}"  x:Name="AnnulerAnalyse_btn" Click="AnnulerAnalyse_btn_Click"  >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/annuler_img.png"/>
+                                                    <TextBlock Text="Annuler"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <!-- delete btn-->
+                                            <Button  Width="105" Margin="10 0 0 5"
+                                         Style="{StaticResource DangerButtonStyle}"  x:Name="DeleteAnalyse_btn" Click="DeleteAnalyse_btn_Click" >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/effacer (1).png"/>
+                                                    <TextBlock Text="Supprimer"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <!-- edit-->
+                                            <Button  Width="100" Margin="10 0 0 5"
+                                         Style="{StaticResource InfoButtonStyle}"  x:Name="EditAnalyse_btn" Click="EditAnalyse_btn_Click"  >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/modifier-loutil.png"/>
+                                                    <TextBlock Text="Modifer"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <!--add-->
+                                            <Button  Width="100"  Margin="10 0 0 5"
+                                            Style="{StaticResource PrimaryButtonStyle}"  x:Name="AddAnalyse_btn" Click="AddAnalyse_btn_Click" >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/icons8-add-new-64.png"/>
+                                                    <TextBlock Text="Ajouter"/>
+                                                </StackPanel>
+                                            </Button>
+                                           
+                                           
+                                        </WrapPanel>
+                                                
+                                      
+                                    </Grid>
+
+                                    </Border>
+                                </Grid>
+                            
+                        </Border>
+                    </TabItem>
+                    <!-- type Analyses-->
+                    <TabItem  Header="Types Analyse" Width="200" Style="{StaticResource tabItemStyle}">
+                        <!--Type Analyses-->
+                        <Border  Padding="20" Background="#99FFFFFF" >
+                            <!-- main type  Analyse-->
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="500" MaxWidth="500"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Grid.Column="0">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="45"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                          <!-- list de type analyse -->
+                                            <Border   Grid.Row="1"  Margin="10" Background="Transparent">
+                                                <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="datagrid_TypeAnalyse" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
+                                                    Margin="21,10,4,20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <DataGrid.Columns>
+                                                        <DataGridTextColumn Header="Type de Analyse" Width="*" IsReadOnly="True" Binding="{Binding Nom_TypeBilan}"/>
+                                                        <DataGridTemplateColumn Header="" IsReadOnly="True" Width="Auto">
+                                                            <DataGridTemplateColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <!-- afficher -->
+                                                                        <Button   
+                                                                        Style="{StaticResource addConslut}" x:Name="show_Typeanalyse" Height="30" Width="38" Margin="0,0,5,0" Click="show_Typeanalyse_Click">
+                                                                            <Button.ToolTip>
+                                                                                <ToolTip>info</ToolTip>
+                                                                            </Button.ToolTip>
+                                                                            <Image  Height="20" VerticalAlignment="Center" Width="40" Source="\images\icons8-info-50.png" HorizontalAlignment="Center"/>
+                                                                        </Button>
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </DataGridTemplateColumn.CellTemplate>
+                                                        </DataGridTemplateColumn>
+
+                                                    </DataGrid.Columns>
+                                                </DataGrid>
+
+                                            </Border>
+                                        </Grid>
+                                    </Border>
+                                    <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="center" Background="#348EF6" ResizeBehavior="PreviousAndNext" />
+                                    <!-- ajouter Type analyse-->
+                                    <Border Grid.Column="2" Padding="6">
+                                        <Grid >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                 <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                            <!-- NombType Analyse-->
+                                            <Border  Grid.Row="0"  VerticalAlignment="Stretch"
+                                           HorizontalAlignment="Stretch">
+                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <TextBlock Text="Intitulé du Type d'Analyse" Margin="0 10 0 0"
+                                             Style="{StaticResource TextBlockStyle}"/>
+                                                    <TextBox Margin="0 5 0 0" Tag="Eneter ici le type Analyse"
+                                                x:Name="NomType_Analyse" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                                              Style="{StaticResource textName}"  />
+                                                    <TextBlock x:Name="Remarque_TypeAnalyse" Margin="0 3 0 0"
+                                                 Style="{StaticResource ErrorTextStyle}" Text=""/>
+                                                </StackPanel>
+
+                                            </Border>
+                                        <WrapPanel  Grid.Row="1" HorizontalAlignment="Right" >
+                                            <!-- annuler btn-->
+                                            <Button  Width="100" Margin="10 0 0 5"
+                                         Style="{StaticResource SecondaryButtonStyle}"  x:Name="AnnulerType_Analyse__btn" Click="AnnulerType_Analyse__btn_Click"  >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/annuler_img.png"/>
+                                                    <TextBlock Text="Annuler"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <!-- delete btn-->
+                                            <Button  Width="105" Margin="10 0 0 5"
+                                            Style="{StaticResource DangerButtonStyle}"  x:Name="DeleteType_Analyse_btn" Click="DeleteType_Analyse_btn_Click" >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/effacer (1).png"/>
+                                                    <TextBlock Text="Supprimer"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <!-- edit-->
+                                            <Button  Width="100" Margin="10 0 0 5"
+                                         Style="{StaticResource InfoButtonStyle}"  x:Name="EditType_Analyse_btn" Click="EditType_Analyse_btn_Click"  >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/modifier-loutil.png"/>
+                                                    <TextBlock Text="Modifer"/>
+                                                </StackPanel>
+                                            </Button>
+                                            <!--add-->
+                                            <Button  Width="100"  Margin="10 0 0 5"
+                                            Style="{StaticResource PrimaryButtonStyle}"  x:Name="AddType_Analyse_btn" Click="AddType_Analyse_btn_Click" >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/icons8-add-new-64.png"/>
+                                                    <TextBlock Text="Ajouter"/>
+                                                </StackPanel>
+                                            </Button>
+
+
+                                        </WrapPanel>
+
+                                    </Grid>
+
+
+
+
+
+
+
+
+
+
+                                    </Border>
+                                </Grid>
+                          
+                        </Border>
+                    </TabItem>
+                    <!-- les modules Analyses-->
+                    <TabItem Header="Les Modéles des Analyses" Width="200" Style="{StaticResource tabItemStyle}">
+                        <Border Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="auto" MaxWidth="500" />
+                                </Grid.ColumnDefinitions>
+                                <!-- list module et nouveau module-->
+                                <Border Grid.Column="0" Padding="8" x:Name="border_module_list" Background="#99FFFFFF" >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <!-- nouveau module analyse-->
+                                        <Border Grid.Row="0" Padding="15">
+                                            <Button  Width="Auto" Height="40" Padding="9"  VerticalAlignment="Center" HorizontalAlignment="Right"
+                                            Style="{StaticResource PrimaryButtonStyle}"  x:Name="btn_add_module" Click="btn_add_module_Click"  >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image  Height="20" Width="20" Margin="0 0 4 0" VerticalAlignment="Center"  Source="/images/icons8-add-new-64.png"/>
+                                                    <TextBlock Text="Nouveau Modéle" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Button>
+                                        </Border>
+                                        <!-- list de module-->
+                                        <Border Grid.Row="1" Padding="15">
+                                            <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="datagrid_Module_analyse" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
+                                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Header="Intitulé du Modéle" Width="*" IsReadOnly="True" Binding="{Binding Nom_Module_Analyse}"/>
+                                                    <DataGridTemplateColumn Header="" IsReadOnly="True" Width="Auto">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <!-- afficher -->
+                                                                    <Button   x:Name="btn_info_modue" Cursor="Hand"
+                                                                        Style="{StaticResource addConslut}" Height="30" Width="38" Margin="0,0,5,0" Click="btn_info_modue_Click">
+                                                                        <Button.ToolTip>
+                                                                            <ToolTip>info</ToolTip>
+                                                                        </Button.ToolTip>
+                                                                        <Image  Height="20" VerticalAlignment="Center" Width="40" Source="\images\info.png" HorizontalAlignment="Center"/>
+                                                                    </Button>
+                                                                    <!-- les analyse-->
+                                                                    <Button   x:Name="btn_analyse_module" Cursor="Hand"
+                                                                        Style="{StaticResource addConslut}"  Height="30" Width="38" Margin="0,0,5,0" Click="btn_analyse_module_Click">
+                                                                        <Button.ToolTip>
+                                                                            <ToolTip>Voir les Analyses</ToolTip>
+                                                                        </Button.ToolTip>
+                                                                        <Image  Height="20" VerticalAlignment="Center" Width="40"   Source="/images/modifier-loutil.png" HorizontalAlignment="Center"/>
+                                                                    </Button>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <Border Grid.Column="1" Width="5" HorizontalAlignment="center" Background="#348EF6"  />
+                                 <!-- info module:modifier,supprimer    -->
+                                <Border Grid.Column="2" Padding="10" Width="400" Visibility="Collapsed" x:Name="Border_info_module" Background="#99FFFFFF">
+                                    <Grid Background="#99FFFFFF">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <!-- header:titre-->
+                                        <Border Grid.Row="0" Padding="15">
+                                            <TextBlock Foreground="DimGray" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="nom_module" FontSize="20" FontWeight="ExtraBlack"/>
+                                        </Border>
+                                        <!-- champs de modifer-->
+                                        <Border Grid.Row="1" Padding="10">
+                                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                                <TextBlock Text="L'Intitulé du modéle: " Margin="0 10 0 0"
+                                           Style="{StaticResource TextBlockStyle}"/>
+                                                <TextBox Margin="0 5 0 0" Height="35"
+                                               x:Name="Nom_module_textbox"  Tag="Entrer ici L' Intitulé de modéle"
+                                                Style="{StaticResource textName}" TextChanged="Nom_module_textbox_TextChanged"  />
+                                                <TextBlock x:Name="Remarque_nom" Margin="0 3 0 0"
+                                                 Style="{StaticResource ErrorTextStyle}" Text=""/>
+                                            </StackPanel>
+
+                                        </Border>
+                                        <!-- buttons-->
+                                        <Border Grid.Row="2" Padding="10" Background="#99FFFFFF">
+                                            <WrapPanel  Grid.Row="2" HorizontalAlignment="Right" >
+                                                <!-- annuler btn-->
+                                                <Button  Width="100" Margin="10 0 0 5"
+                                         Style="{StaticResource SecondaryButtonStyle}"  x:Name="Annule_module_rAnalyse_btn" Click="Annule_module_rAnalyse_btn_Click"  >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/annuler_img.png"/>
+                                                        <TextBlock Text="Annuler"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <!-- delete btn-->
+                                                <Button  Width="105" Margin="10 0 0 5"
+                                         Style="{StaticResource DangerButtonStyle}"  x:Name="Delete_module_Analyse_btn" Click="Delete_module_Analyse_btn_Click" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/effacer (1).png"/>
+                                                        <TextBlock Text="Supprimer"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <!-- edit-->
+                                                <Button  Width="100" Margin="10 0 0 5"
+                                         Style="{StaticResource InfoButtonStyle}"  x:Name="Edit_moduleAnalyse_btn" Click="Edit_moduleAnalyse_btn_Click"   >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/modifier-loutil.png"/>
+                                                        <TextBlock Text="Modifer"/>
+                                                    </StackPanel>
+                                                </Button>
+                                            </WrapPanel>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <!-- info analyse de module-->
+                                <Border Grid.Column="0" Padding="10" Visibility="Collapsed"  x:Name="border_analyse_module">
+                                    <Grid Background="#99FFFFFF">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="AUTO"/>
+                                        </Grid.RowDefinitions>
+                                        <!-- header:titre-->
+                                        <Border Grid.Row="0" Padding="15">
+                                            <TextBlock Foreground="DimGray" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="nom_module_analyse" FontSize="20" FontWeight="ExtraBlack"/>
+                                        </Border>
+                                        <!--add analyse -->
+                                        <Border Grid.Row="1"  Padding="10">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <!-- combbox type analyse-->
+                                                <Border Grid.Column="0" Padding="6">
+                                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                        <TextBlock Text="Type des analyses" Margin="0 10 0 0"
+                                                         Style="{StaticResource TextBlockStyle}"/>
+                                                        <ComboBox Width="300" x:Name="comboboxType_analyse_module"
+                                                    FontSize="13" 
+                                                    Style="{DynamicResource theComboBox}"
+                                                    Height="35"  Margin="0 5 0 15" IsTextSearchEnabled="True" 
+                                                    ItemContainerStyle="{DynamicResource theComboBoxItem}" SelectionChanged="comboboxType_analyse_module_SelectionChanged" >
+                                                        </ComboBox>
+                                                    </StackPanel>
+                                                </Border>
+                                                <!-- combbox  analyse-->
+                                                <Border Grid.Column="1" Padding="6" >
+                                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                        <TextBlock Text="L'analyse" Margin="0 10 0 0"
+                                             Style="{StaticResource TextBlockStyle}"/>
+                                                        <ComboBox Width="300" x:Name="combobox_analyse_module"
+                                                         FontSize="13" 
+                                                    Style="{DynamicResource theComboBox}"
+                                                    Height="35"  Margin="0 5 0 15" IsEditable="True" IsTextSearchEnabled="True" 
+                                                    ItemContainerStyle="{DynamicResource theComboBoxItem}">
+                                                        </ComboBox>
+                                                    </StackPanel>
+                                                </Border>
+                                                <!--btn add-->
+                                                <Border Grid.Column="2" Padding="6" >
+                                                    <!--add-->
+                                                    <Button  Width="100" Height="35" Margin="0 10 0 0" VerticalAlignment="Center" 
+                                                     Style="{StaticResource PrimaryButtonStyle}"  x:Name="Add_analyse_module_btn" Click="Add_analyse_module_btn_Click" >
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/icons8-add-new-64.png"/>
+                                                            <TextBlock Text="Ajouter"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                </Border>
+                                                <!--btn annuler-->
+                                                <Border Grid.Column="3" Padding="6">
+                                                    <Button  Width="100" Margin="0 10 0 0" VerticalAlignment="Center" HorizontalAlignment="Right"
+                                                     Style="{StaticResource SecondaryButtonStyle}"  x:Name="Annuler_analyse_module_btn" Click="Annuler_analyse_module_btn_Click" >
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/annuler_img.png"/>
+                                                            <TextBlock Text="Annuler"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                        <!-- list ananlyse de module-->
+                                        <Border Grid.Row="2" Padding="15">
+                                            <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="datagrid_analyse_of_module" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
+                                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Header="Analyse" Width="*" IsReadOnly="True" Binding="{Binding NomAnalyse}"/>
+                                                    <DataGridTextColumn Header="Type Analyse" Width="*" IsReadOnly="True" Binding="{Binding TypeAnalyse}"/>
+                                                    <DataGridTemplateColumn Header="" IsReadOnly="True" Width="Auto">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <!-- supprimer -->
+                                                                    <Button   x:Name="btn_delete_analyse_of_module" Cursor="Hand"
+                                                                        Style="{StaticResource addConslut}" Height="30" Width="38" Margin="0,0,5,0" Click="btn_delete_analyse_of_module_Click" >
+                                                                        <Button.ToolTip>
+                                                                            <ToolTip>supprimer</ToolTip>
+                                                                        </Button.ToolTip>
+                                                                        <Image  Height="20" VerticalAlignment="Center" Width="40" Source="\images\effacer.png" HorizontalAlignment="Center"/>
+                                                                    </Button>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                        </Border>
+                                        <!-- image aucun analyse-->
+                                        <Border x:Name="border_image_Aucun_analyse_on_module" Visibility="Collapsed" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center"   Padding="10">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="5"/>
+                                                    <RowDefinition Height="20"/>
+                                                </Grid.RowDefinitions>
+                                                <Image Grid.Row="0" Source="/forms/folder.png" Height="100" Width="100" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+                                                <TextBlock HorizontalAlignment="Center" Text="Aucun Analyse dans ce modéle " FontSize="14" FontWeight="Black" Foreground="Gray" Grid.Row="2"/>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </TabItem>
+                </TabControl>
+            </Border>
+          
+        </Grid>
+    </Border>
+   
+</UserControl>

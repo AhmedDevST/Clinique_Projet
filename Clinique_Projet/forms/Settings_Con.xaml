@@ -1,0 +1,104 @@
+﻿<Window x:Class="Clinique_Projet.forms.Settings_Con"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clinique_Projet.forms"
+        mc:Ignorable="d"
+        Title="Settings_Con" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Background="Transparent" AllowsTransparency="True" Height="550" Width="600">
+    <Border CornerRadius="10" Background="White">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Border  Grid.Row="0" Padding="10"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <TextBlock Text="Nom de Serveur" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                    <TextBox Margin="0 5 0 0"
+                             Tag="Nom de serveur"  x:Name="Nom_ser"
+                             Style="{StaticResource textName}"   />
+
+
+                </StackPanel>
+            </Border>
+            <Border  Grid.Row="1" Padding="10"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <TextBlock Text="IP address de Serveur" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                    <TextBox Margin="0 5 0 0"
+                             Tag="IP address de serveur"  x:Name="IP_ser"
+                             Style="{StaticResource textName}"   />
+
+
+                </StackPanel>
+            </Border>
+            <Border  Grid.Row="2" Padding="10"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <TextBlock Text="Nom de base de donnée" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                    <TextBox Margin="0 5 0 0"
+                             Tag="Nom de base de donnée"  x:Name="Nom_db"
+                             Style="{StaticResource textName}"   />
+
+
+                </StackPanel>
+            </Border>
+            <Border  Grid.Row="3" Padding="10"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <TextBlock Text="User de Serveur" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                    <TextBox Margin="0 5 0 0"
+                             Tag="User de serveur"  x:Name="user_ser"
+                             Style="{StaticResource textName}"   />
+                </StackPanel>
+            </Border>
+            <Border  Grid.Row="4" Padding="10"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <TextBlock Text="password  de user" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                    <TextBox Margin="0 5 0 0"
+                             Tag="password de user"  x:Name="pass_ser"
+                             Style="{StaticResource textName}"   />
+                </StackPanel>
+            </Border>
+            <Border  Grid.Row="5" Padding="10"  VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <TextBlock Text="Mot de passe" Margin="0 10 0 0"
+                               Style="{StaticResource TextBlockStyle}"/>
+                    <TextBox Margin="0 5 0 0"
+                             Tag="entre le mot de passe pour valider les données"  x:Name="pass_admin"
+                             Style="{StaticResource textName}"   />
+                </StackPanel>
+            </Border>
+            <!--btns-->
+            <Border Grid.Row="6" Padding="10">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <!-- annuler-->
+                    <Button    Margin="5"
+                  Style="{StaticResource DangerButtonStyle}" x:Name="Btn_Annuler" Height="30" Width="80"  Canvas.Top="5" Canvas.Left="10" 
+                 Content="Annuler" Click="Btn_Annuler_Click">
+                    </Button>
+
+                    <Button   
+                  Style="{StaticResource PrimaryButtonStyle}" x:Name="Btn_save" Height="30" Width="80" 
+                Content="Save"   FontFamily="Cambria" Click="Btn_save_Click" >
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

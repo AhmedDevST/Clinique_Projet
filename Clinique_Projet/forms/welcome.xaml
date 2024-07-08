@@ -1,0 +1,16 @@
+﻿<Window x:Class="Clinique_Projet.forms.welcome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clinique_Projet.forms"
+        mc:Ignorable="d"
+        Title="welcome" Height="60" Width="380" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#FF5DC165">
+    <Grid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Source="/images/jaccepte.png" Width="40" Margin="0 0 15 0" VerticalAlignment="Center"/>
+            <TextBlock x:Name="text"  FontFamily="Trebuchet MS" FontStyle="Italic" FontSize="17" FontWeight="Bold" 
+                       VerticalAlignment="Center" Foreground="White"/>
+        </StackPanel>
+    </Grid>
+</Window>

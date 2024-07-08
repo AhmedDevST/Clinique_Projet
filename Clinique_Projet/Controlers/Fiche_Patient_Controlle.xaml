@@ -1,0 +1,607 @@
+﻿<UserControl x:Class="Clinique_Projet.Controlers.Fiche_Patient_Controlle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Clinique_Projet.Controlers"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="Transparent" Unloaded="UserControl_Unloaded" Loaded="UserControl_Loaded" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <!-- header-->
+        <Border  Grid.Row="0" Padding="5 0 5 0 " BorderThickness="0 0 0 3" BorderBrush="Gray">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+              
+                    <WrapPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <!-- new consultation-->
+                        <Button   Margin="20 0 10 0"
+                              Style="{StaticResource SecondaryButtonStyle}"  x:Name="ModiferPatient_btn" Click="ModiferPatient_btn_Click"   >
+                            <StackPanel Orientation="Horizontal">
+                                <Image  Height="20" Width="20"  Margin="0 0 5 0"  Source="/images/modifier-loutil.png"/>
+                                <TextBlock Text="Modifier ce Patient"/>
+                            </StackPanel>
+                        </Button>
+                        <Button  
+                              Style="{StaticResource InfoButtonStyle}"  x:Name="NewConsult_btn" Click="NewConsult_btn_Click"   >
+                            <StackPanel Orientation="Horizontal">
+                                <Image  Height="20" Width="20"  Margin="0 0 4 0"  Source="/images/icons8-add-new-64.png"/>
+                                <TextBlock Text="Nouvelle Consultation"/>
+                            </StackPanel>
+                        </Button>
+                        <!-- modifer patient-->
+                       
+                    </WrapPanel>
+
+                <Border  Padding="15 0 0 5"  >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Fiche Patient:"
+                       Foreground="Black" FontSize="22" FontWeight="SemiBold"
+                       VerticalAlignment="Center" HorizontalAlignment="Left" FontFamily="Trebuchet MS" />
+                        <TextBlock x:Name="Patient_Name" Margin="9 0 0 0" 
+                       Foreground="Black" FontSize="18" FontFamily="Trebuchet MS" FontWeight="Black"
+                       VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    </StackPanel>
+                </Border>
+
+            </Grid>
+        </Border>
+       
+        <!-- main -->
+        <Border  Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="17" >
+              <TabControl   Style="{StaticResource TabControlStyle}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <!-- les informations-->
+                    <TabItem Header="Les Informations" Width="200" Style="{StaticResource tabItemStyle}" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                        <Border Padding="5 50 10 0 ">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="200"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="200"/>
+                                </Grid.RowDefinitions>
+                                <!--information personnelles-->
+                                <Border Grid.Row="0" Padding="5" Style="{StaticResource styleBorder}">
+                                    <Grid Background="Transparent">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="40"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <!-- header-->
+                                        <Grid Grid.Row="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="2"/>
+                                            </Grid.RowDefinitions>
+                                            <Border Grid.Row="0" Padding="15 0 0 5"  >
+                                                <TextBlock Text="Information Personnelles"
+                                      Foreground="Black" FontSize="18" FontWeight="SemiBold"
+                                     VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                            </Border>
+                                            <Border Grid.Row="1" Background="#0d6efd" CornerRadius="5" />
+                                        </Grid>
+                                        <!--main-->
+                                        <Border  Grid.Row="1" Padding="10 0 0 0">
+                                            <Grid >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="20"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="20"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="20"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="0"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <!--nom-->
+                                                <WrapPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                                                    <TextBlock Text="Nom:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                    <TextBlock  x:Name="Nom_patient" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                </WrapPanel>
+                                                <!--prenom-->
+                                                <WrapPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
+                                                    <TextBlock Text="Prenom:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                    <TextBlock  x:Name="prenom_patient" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                </WrapPanel>
+                                                <!--CIN-->
+                                                <WrapPanel Grid.Row="0" Grid.Column="4" VerticalAlignment="Center">
+                                                    <TextBlock Text="CIN:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                    <TextBlock  x:Name="Cin_Patient" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                </WrapPanel>
+                                                <!--Sex-->
+                                                <WrapPanel Grid.Row="0" Grid.Column="6" VerticalAlignment="Center">
+                                                    <TextBlock Text="Sex:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                    <TextBlock   x:Name="Sex_Patient" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                </WrapPanel>
+                                                <!--Date naissance-->
+                                                <WrapPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
+                                                    <TextBlock Text="Date naissance:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                    <TextBlock   x:Name="DateNaissance" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                </WrapPanel>
+                                                <!--Age-->
+                                                <WrapPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">
+                                                    <TextBlock Text="Age:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                    <TextBlock x:Name="Age_Patient" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                </WrapPanel>
+                                                <!--Lieu naissance-->
+                                                <WrapPanel Grid.Row="2" Grid.Column="4" VerticalAlignment="Center">
+                                                    <TextBlock Text="Lieu de  Naissance:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                    <TextBlock  x:Name="LieuNiassance" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                </WrapPanel>
+                                                <!--Date d'inscription-->
+                                                <WrapPanel Grid.Row="2" Grid.Column="6" VerticalAlignment="Center">
+                                                    <TextBlock Text="Date d'inscription:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                    <TextBlock x:Name="Date_Save_Patient" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                </WrapPanel>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <!-- information de contact && plus -->
+                                <Border Grid.Row="2"  >
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <!-- info contact-->
+                                        <Border Grid.Column="0" Padding="5" Style="{StaticResource styleBorder}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="40"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <!-- header-->
+                                                <Grid Grid.Column="0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="2"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Border Grid.Row="0" Padding="15 0 0 5"  >
+                                                        <TextBlock Text="Information de contacts"
+                                      Foreground="Black" FontSize="18" FontWeight="SemiBold"
+                                     VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                                    </Border>
+                                                    <Border Grid.Row="1" Background="#0d6efd" CornerRadius="5" />
+                                                </Grid>
+                                                <!--main-->
+                                                <Border  Grid.Row="1" Padding="10 0 0 0">
+                                                    <Grid >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="20"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="0"/>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <!--phone-->
+                                                        <WrapPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                                                            <TextBlock Text="Téléphone:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                            <TextBlock    x:Name="Phone_patient" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                        </WrapPanel>
+                                                        <!--email-->
+                                                        <WrapPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
+                                                            <TextBlock Text="Email:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                            <TextBlock x:Name="Email_patient" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                        </WrapPanel>
+                                                        <!--Addresse-->
+                                                        <WrapPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
+                                                            <TextBlock Text="Addresse:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                            <TextBlock  x:Name="Address_patient"  FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                        </WrapPanel>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                        <!-- info plus-->
+                                        <Border Grid.Column="2" Padding="5" Style="{StaticResource styleBorder}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="40"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <!-- header-->
+                                                <Grid Grid.Column="0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="2"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Border Grid.Row="0" Padding="15 0 0 5"  >
+                                                        <TextBlock Text="Plus d'Information "
+                                      Foreground="Black" FontSize="18" FontWeight="SemiBold"
+                                     VerticalAlignment="Center" HorizontalAlignment="Left" />
+                                                    </Border>
+                                                    <Border Grid.Row="1" Background="#0d6efd" CornerRadius="5" />
+                                                </Grid>
+                                                <!--main-->
+                                                <Border Grid.Row="1" Padding="10 0 0 0">
+                                                    <Grid >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="20"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="0"/>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <!--ASsurance-->
+                                                        <WrapPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                                                            <TextBlock Text="Asssurance:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                            <TextBlock  x:Name="Assurance_patient" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                        </WrapPanel>
+                                                        <!--Profession-->
+                                                        <WrapPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
+                                                            <TextBlock Text="Profession:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                            <TextBlock  x:Name="Profession_patient" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                        </WrapPanel>
+                                                        <!--etat civil-->
+                                                        <WrapPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
+                                                            <TextBlock Text="Etat de civil:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                            <TextBlock  x:Name="etatCivil_patient" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                        </WrapPanel>
+                                                        <!--Group sang-->
+                                                        <WrapPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">
+                                                            <TextBlock Text="Group de sang:" FontSize="14" Margin="0 0 10 0" Foreground="Black" FontWeight="DemiBold"/>
+                                                            <TextBlock  x:Name="Groupsang_patient" FontSize="14" Foreground="Black" FontWeight="DemiBold"/>
+                                                        </WrapPanel>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </ScrollViewer>
+                        
+                    </TabItem>
+                    <!-- Antécédents-->
+                    <TabItem  Header="Antécédants" Width="200" Style="{StaticResource tabItemStyle}">
+                        <Border Padding="5 20 0 0 ">
+                            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="300"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                                <!-- data grid antecdents-->
+                                <Border Grid.Column="0"  Height="Auto" Style="{StaticResource styleBorder}" >
+                                    <DataGrid Style="{DynamicResource DataGridStyle_Consultation_Doss}" x:Name="datagrid_TypeANtecedent" CellStyle="{DynamicResource DataGridCellStyle1_Consultation_Doss}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle_Consultation_Doss}" RowStyle="{DynamicResource DataGridRowStyle_Consultation_Doss}"
+                                     HorizontalAlignment="Stretch" Margin="7" VerticalAlignment="Stretch">
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn Header="" IsReadOnly="True" Width="*">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button  Margin="0,0,5,0" x:Name="ShowInfo_Anteced_btn" Content="{Binding Nom_TypeANteced}"
+                                                         Style="{StaticResource infobtn_Doss}" Height="31"  Click="ShowInfo_Anteced_btn_Click" >
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Border>
+                            <Grid Grid.Column="2" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="60"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <!--actuliser -->
+                                <Border Grid.Row="0" >
+                                    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right">
+                                        <TextBlock FontSize="19" Visibility="Collapsed" Foreground="Blue"  x:Name="titre_Anteced"/>
+                                        <Image Margin="0 0 20 0" Source="/images/rafraichir.png" x:Name="image_initialiser" Cursor="Hand"  Width="30" MouseDown="image_initialiser_MouseDown" >
+                                            <Image.ToolTip>
+                                                <ToolTip>Réafficher tous les antécédants</ToolTip>
+                                            </Image.ToolTip>
+                                        </Image>
+                                    </StackPanel>
+                                </Border>
+                                <!-- all antecdents-->
+                                <Border x:Name="Border_All_antecdents"   Grid.Row="1" Style="{StaticResource styleBorder}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"   Padding="10 20 10 10">
+                                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                        <ListView x:Name="myListView_antecedent" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="Transparent"    BorderBrush="Transparent" BorderThickness="0" IsEnabled="False">
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListViewItem">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                           
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid HorizontalAlignment="Stretch" >
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="30"/>
+                                                            <RowDefinition Height="4"/>
+                                                            <RowDefinition Height="30"/>
+                                                            <RowDefinition Height="4"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="2"/>
+                                                            <RowDefinition Height="10"/>
+                                                        </Grid.RowDefinitions>
+                                                        <!-- Date-->
+                                                        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" >
+                                                            <TextBlock FontSize="15"  FontWeight="ExtraBlack" Text="Date:" />
+                                                            <TextBlock FontSize="15" FontWeight="ExtraLight" Text="{Binding  anteced.Date_Anteced, StringFormat={}{0:dd/MM/yyyy}}" />
+                                                        </StackPanel>
+                                                        <!-- Type antcedent-->
+                                                        <StackPanel Grid.Row="2"  Orientation="Horizontal" >
+                                                            <TextBlock FontSize="15"  FontWeight="ExtraBlack" Text="Antécédent:" />
+                                                            <TextBlock FontSize="15" FontWeight="DemiBold" Text="{Binding type_anteced.Nom_TypeANteced}" />
+                                                        </StackPanel>
+                                                        <!--observation-->
+                                                        <StackPanel Grid.Row="4"  >
+                                                            <TextBlock FontSize="15" TextWrapping="Wrap"   Height="Auto"  Margin="10 0 0 10" FontWeight="Medium" Text="{Binding anteced.Descrip_Anteced}" />
+                                                        </StackPanel>
+                                                        <Border Grid.Row="5" BorderBrush="#CECECE"  BorderThickness="1" />
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </ScrollViewer>
+                                </Border>
+                                <!-- image aucun antedents-->
+                                <Border x:Name="border_image_antecdent" Visibility="Collapsed" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"   Padding="10 20 10 10">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="5"/>
+                                            <RowDefinition Height="20"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Row="0" Source="/images/folder.png" Height="100" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+                                        <TextBlock Grid.Row="2" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Aucun Antécédent" FontWeight="DemiBold" Foreground="#ACACAC"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                        </Border>
+                    </TabItem>
+                    <!--dossier medicals-->
+                    <TabItem Header="Dossier Médicals" Width="200" Style="{StaticResource tabItemStyle}" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                        <Border Padding="5 20 0 0">
+                            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="260"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <!-- data grid consultation-->
+                            <Image Grid.Column="0" Source="/images/folder.png" Visibility="Hidden" x:Name="no_item"/>
+                            <Border Grid.Column="0" Height="Auto" Style="{StaticResource styleBorder}">
+                                    <DataGrid Style="{DynamicResource DataGridStyle_Consultation_Doss}" x:Name="datagrid_Consult" CellStyle="{DynamicResource DataGridCellStyle1_Consultation_Doss}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle_Consultation_Doss}" RowStyle="{DynamicResource DataGridRowStyle_Consultation_Doss}"
+                              HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch">
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn Header="" IsReadOnly="True" Width="Auto" MaxWidth="270">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Button  x:Name="Show_infoConsult" Content="{Binding NomConsult }"
+                                                         Style="{StaticResource infobtn_Doss}" Height="31"  Click="Show_infoConsult_Click"/>
+                                                        <Button  Margin="5 0 0 0"
+                                                            Style="{StaticResource infobtn_Doss1}"  x:Name="EditConsult_btn" Click="EditConsult_btn_Click"  >
+                                                            <Image  Height="20" Width="20" Margin="0 0 4 0"  Source="/images/modifier-loutil.png"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                       </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+
+                                </Border>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border Grid.Row="0" >
+                                        <StackPanel   VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <TextBlock FontSize="19"  Foreground="Blue" x:Name="TitreConsult"/>
+                                            <TextBlock FontSize="16"  HorizontalAlignment="Center" Foreground="Black" x:Name="TerminerConsult" />
+                                        </StackPanel>
+                                    </Border>
+                                    <ScrollViewer  Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                                        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="20">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+
+                                            </Grid.RowDefinitions>
+
+                                            <!-- genaral information consultation:-->
+                                            <Expander Grid.Row="0" Style="{StaticResource expander_style}"  Header="Informations Généraux des consultations" Background="#99FFFFFF" x:Name="Expander_InfoConsult" BorderBrush="#bbc1d1"  Foreground="#000" Padding="10" FontSize="14" Margin="0 0 0 5" >
+                                                <Border >
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="20"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid Grid.Column="0">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="*"/>
+                                                                <RowDefinition Height="*"/>
+                                                                <RowDefinition Height="*"/>
+                                                            </Grid.RowDefinitions>
+                                                            <!-- motif-->
+                                                            <Border  Padding="6" Grid.Row="0" VerticalAlignment="Stretch"
+                                                                HorizontalAlignment="Stretch">
+                                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                                    <TextBlock Text="Motif " Margin="0 10 0 0"
+                                                               Style="{StaticResource TextBlockStyle}"/>
+                                                                    <TextBox Margin="0 5 0 0"
+                                                                   x:Name="motif_Consult" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True"
+                                                                    Style="{StaticResource textBoxStyle}"  />
+                                                                </StackPanel>
+                                                            </Border>
+                                                            <!-- Poids-->
+                                                            <Border  Grid.Row="1" Padding="6"  VerticalAlignment="Stretch"
+                                                            HorizontalAlignment="Stretch">
+                                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                                    <TextBlock Text="Poids (KG) " Margin="0 10 0 0"
+                                                                 Style="{StaticResource TextBlockStyle}"/>
+                                                                    <TextBox Margin="0 5 0 0"
+                                                                 x:Name="Poids_patient"
+                                                                 Style="{StaticResource textBoxStyle}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                            <!-- Taille-->
+                                                            <Border  Padding="6" Grid.Row="2"  VerticalAlignment="Stretch"
+                                                             HorizontalAlignment="Stretch">
+                                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                                    <TextBlock Text="Taille (Cm)" Margin="0 10 0 0"
+                                                                  Style="{StaticResource TextBlockStyle}"/>
+                                                                    <TextBox Margin="0 5 0 0" 
+                                                        x:Name="Taille_Patient"
+                                            Style="{StaticResource textBoxStyle}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                        <Grid Grid.Column="2">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="*"/>
+                                                                <RowDefinition Height="*"/>
+                                                            </Grid.RowDefinitions>
+                                                            <!-- diagnostique medicale-->
+                                                            <Border  Grid.Row="0" Padding="6"  VerticalAlignment="Stretch"
+                                                                 HorizontalAlignment="Stretch">
+                                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                                    <TextBlock Text="diagnostique medicale" Margin="0 10 0 0"
+                                                                Style="{StaticResource TextBlockStyle}"/>
+                                                                    <TextBox Margin="0 5 0 0"  Height="90" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                                                                              x:Name="Diagnostique_Consult"
+                                                                    Style="{StaticResource textBoxStyle}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                            <!-- result d'examen clinique-->
+                                                            <Border  Grid.Row="1" Padding="6"  VerticalAlignment="Stretch"
+                                                                HorizontalAlignment="Stretch">
+                                                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                                    <TextBlock Text="result d'examen clinique" Margin="0 10 0 0"
+                                                                        Style="{StaticResource TextBlockStyle}"/>
+                                                                    <TextBox Margin="0 5 0 0" Height="90" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                                                                     x:Name="ExamenC_consult"
+                                                                        Style="{StaticResource textBoxStyle}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Grid>
+                                                </Border>
+                                            </Expander>
+                                            <!-- Bilans information consultation:-->
+                                            <Expander Grid.Row="1" Style="{StaticResource expander_style}"  Header=" Bilans" x:Name="ExpanderBilans" Margin="0 0 0 5" Background="#99FFFFFF" BorderBrush="#bbc1d1" FontSize="14" Foreground="#000" Padding="10">
+                                                <Border Margin="10">
+                                                    <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="datagrid_Bilans" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
+                                                    Margin="21,10,4,20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Header="Date" Width="Auto" IsReadOnly="True" Binding="{Binding Bilans.DateBilan, StringFormat={}{0:dd/MM/yyyy}}"/>
+                                                            <DataGridTextColumn Header="Le Bilan" Width="*" IsReadOnly="True" Binding="{Binding Analyse.NomAnalyse}"/>
+                                                            <DataGridTextColumn Header="Type de Bilan" Width="*" IsReadOnly="True" Binding="{Binding TypeAnalyse.Nom_TypeBilan}"/>
+                                                            <DataGridTemplateColumn Header="Info" IsReadOnly="True" Width="Auto">
+                                                                <DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <!-- afficher observations-->
+                                                                            <Button   
+                                                                        Style="{StaticResource addConslut}" Height="30" x:Name="DetailsBilan_btn" Width="38" Margin="0,0,5,0" Click="DetailsBilan_btn_Click">
+                                                                                <Button.ToolTip>
+                                                                                    <ToolTip>Nouveau RDV</ToolTip>
+                                                                                </Button.ToolTip>
+                                                                                <Image  Height="20" VerticalAlignment="Center" Width="40" Source="/images/icons8-info-50.png" HorizontalAlignment="Center"/>
+                                                                            </Button>
+                                                                        </StackPanel>
+                                                                    </DataTemplate>
+                                                                </DataGridTemplateColumn.CellTemplate>
+                                                            </DataGridTemplateColumn>
+
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+
+                                                </Border>
+                                            </Expander>
+                                            <!-- Medicament information consultation:-->
+                                            <Expander Grid.Row="2"  Style="{StaticResource expander_style}" x:Name="ExpanderOrdonnace" Header=" Information des médicaments" Margin="0 0 0 5" FontSize="14" Background="#99FFFFFF" BorderBrush="#bbc1d1" Foreground="#000"  Padding="10">
+                                                <Border Margin="10">
+                                                    <DataGrid Style="{DynamicResource DataGridStyle1}" x:Name="datagrid_ordonnaces" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}"
+                                                    Margin="21,10,4,20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Header="Date" Width="*" IsReadOnly="True" Binding="{Binding ordonnance.DateOrdonnace, StringFormat={}{0:dd/MM/yyyy}}"/>
+                                                            <DataGridTextColumn Header="Médicament" Width="*" IsReadOnly="True" Binding="{Binding Medicament.NomMedcament}"/>
+                                                            <DataGridTextColumn Header="Type de Médicament" Width="*" IsReadOnly="True" Binding="{Binding CatMedicament.Nom_CatMedicament}"/>
+                                                            <DataGridTemplateColumn Header="Info" IsReadOnly="True" Width="Auto">
+                                                                <DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <!-- afficher deatials ordonnace-->
+                                                                            <Button   
+                                                                        Style="{StaticResource addConslut}" Height="30" x:Name="DetailsOrdonnnace_btn" Width="38" Margin="0,0,5,0" Click="DetailsOrdonnnace_btn_Click" >
+                                                                                <Button.ToolTip>
+                                                                                    <ToolTip>info</ToolTip>
+                                                                                </Button.ToolTip>
+                                                                                <Image  Height="20" VerticalAlignment="Center" Width="40" Source="/images/icons8-info-50.png" HorizontalAlignment="Center"/>
+                                                                            </Button>
+                                                                        </StackPanel>
+                                                                    </DataTemplate>
+                                                                </DataGridTemplateColumn.CellTemplate>
+                                                            </DataGridTemplateColumn>
+
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+
+                                                </Border>
+                                            </Expander>
+                                        </Grid>
+                                    </Border>
+                                    </ScrollViewer>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </TabItem>
+
+                </TabControl>
+           
+           </Border>
+
+        <!-- footer-->
+        <!-- btn-->
+        <Border Grid.Row="2"   VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+              
+                <!-- supprimer le patient-->
+                <Border Grid.Column="2">
+                    <Button  Height="35" Width="120" HorizontalAlignment="Right" x:Name="Delete_btn" Margin="0 0 10 20"
+                              Style="{StaticResource DangerButtonStyle}" Click="Delete_btn_Click">
+                        <StackPanel Orientation="Horizontal">
+                           
+                            <TextBlock Text="Supprimer"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

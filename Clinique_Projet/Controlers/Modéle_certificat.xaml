@@ -1,0 +1,442 @@
+﻿<UserControl x:Class="Clinique_Projet.Controlers.Modéle_certificat"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1100" Background="#99FFFFFF">
+    <Border Padding="0 20 0 0">
+    <Grid>
+        <TabControl   Style="{StaticResource TabControlStyle}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+            <!-- CERtificate medical-->
+            <TabItem Header="C. Maladie" Width="200" Style="{StaticResource tabItemStyle}"  HorizontalContentAlignment="Center">
+                <TabControl Style="{StaticResource TabControlStyle}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <TabItem Header="Arrete de travail"  Width="200" Style="{StaticResource tabItemStyle}"  HorizontalContentAlignment="Center">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition MinWidth="200"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition MinWidth="200"/>
+                            </Grid.ColumnDefinitions>
+                          
+                            <Border Padding="10" MaxWidth="600" MaxHeight="730" Background="White" Grid.Column="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                        <Image Source="/images/Capture_certificat.png" Grid.Row="1" />
+                                        <Canvas Grid.Row="0">
+                                        <!-- annuler-->
+                                        <Button   
+                  Style="{StaticResource DangerButtonStyle}" x:Name="Btn_Annuler" Height="30" Width="75"  Canvas.Top="20" Canvas.Left="10" 
+                    Content="Annuler" FontFamily="TIMES NEW ROMAN" Cursor="Hand" Background="#FF6A737B" BorderBrush="#FF6A737B" Click="Btn_Annuler_Click">
+                                            <Button.ToolTip>
+                                                <ToolTip>Annuler</ToolTip>
+                                            </Button.ToolTip>
+                                        </Button>
+                                        <!-- imprimer-->
+                                        <Button   
+                  Style="{StaticResource PrimaryButtonStyle}" x:Name="Btn_Print" Content="Imprimer" Height="30" Width="75" Canvas.Top="20" 
+                    Canvas.Left="95" Click="Btn_Print_Click" FontFamily="TIMES NEW ROMAN" Background="#FF0079FA">
+                                            <Button.ToolTip>
+                                                <ToolTip>Imprimer</ToolTip>
+                                            </Button.ToolTip>
+
+                                        </Button>
+                                    </Canvas>
+                                        <Grid Grid.Row="1" x:Name="Print_Certificate" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="AUTO"/>
+                                                <RowDefinition Height="AUTO"/>
+                                                <RowDefinition Height="150"/>
+                                            </Grid.RowDefinitions>
+                                        <!-- titre-->
+                                        <Border Grid.Row="0">
+                                            <Border Height="50" BorderThickness="0 1 0 1" BorderBrush="Gray" >
+                                                <TextBlock Text="CERTIFICAT MEDICAL" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Foreground="#FF6E96FA" FontWeight="DemiBold" FontFamily="Times New Roman" FontStyle="Italic"/>
+                                            </Border>
+                                        </Border>
+                                        <!-- main -->
+                                        <Border Grid.Row="1" Padding="20" >
+                                                <!--  <Border.Background>
+                                                <ImageBrush Stretch="Uniform" ImageSource="/Controlers/Capture_certificat.png" />
+                                            </Border.Background> -->
+                                            <StackPanel Orientation="Vertical">
+                                                <!--nom docteur-->
+                                                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                                                    <TextBlock Text="Je soussigné(e) Dr" FontSize="16" Margin="0 0 20 10" Foreground="#FF323131"  FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                    <TextBlock Text="BOUKARI Hasnae" FontSize="16"  Margin="0 0 0 10" FontWeight="DemiBold" Foreground="#496FFF" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                </StackPanel>
+                                                <!-- patient-->
+                                                <StackPanel Orientation="Horizontal"  Margin="0 0 0 0">
+                                                    <TextBlock Text="certifie que l'état de santé de:"  Margin="0 0 20 10" VerticalAlignment="Center" FontSize="16"  Foreground="#FF323131" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique" />
+                                                    <TextBox x:Name="Nom_patient" Margin="0 0 0 10"  FontSize="16" FontFamily="TIMES NEW ROMAN" FontWeight="DemiBold" Foreground="#496FFF" Background="Transparent" 
+                                      BorderBrush="Transparent" MinWidth="160" TouchUp="Nom_patient_TouchUp" Style="{StaticResource TextBoxWithPlaceholder1}"/>
+                                                </StackPanel>
+                                                <!--arret de travail-->
+                                                <WrapPanel Orientation="Horizontal"  Margin="0 0 0 0">
+                                                    <TextBlock Text="1- Nécessite un arrete de travail de " VerticalAlignment="Center" FontSize="16"  Foreground="#FF323131" Margin="0 0 10 10" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique" FontWeight="Medium"/>
+                                                    <TextBox  FontSize="18" IsEnabled="False" Background="Transparent" x:Name="NbJours_ArretTrav" FontWeight="DemiBold" Foreground="#496FFF" Margin="0 0 20 10" Text="0" TextAlignment="Center" FontFamily="TIMES NEW ROMAN" BorderBrush="Transparent" MinWidth="100"/>
+                                                    <TextBlock Text="jours" FontSize="16" Foreground="#FF323131"  Margin="0 0 0 10" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                </WrapPanel>
+                                                <!-- date de arret de travail-->
+                                                <WrapPanel Orientation="Horizontal"  Margin="0 0 0 0">
+                                                    <TextBlock Text="(sauf complications) du  " VerticalAlignment="Center" FontSize="16"  Foreground="#FF323131"  Margin="0 0 20 10" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                         <DatePicker  x:Name="DateDebut_ArretTrav"  Style="{DynamicResource DatePickerStyle1}"  CalendarStyle="{StaticResource MyCalendarStyle1}" Height="35" Background="Transparent" FontSize="16" FontWeight="DemiBold" Foreground="#496FFF" Margin="0 0 30 10"  MinWidth="50" SelectedDateChanged="DateDebut_ArretTrav_SelectedDateChanged"/>
+                                                        <TextBlock x:Name="DateDebut_ArretTrav_text" Visibility="Collapsed" FontSize="16"  Margin="5 0 5 10" FontWeight="DemiBold" Foreground="#496FFF" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                        <TextBlock Text="au" FontSize="16"  Foreground="#FF323131" Margin="0 0 30 10" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                        <DatePicker  x:Name="DateFin_ArretTrav"  Style="{DynamicResource DatePickerStyle1}"  CalendarStyle="{StaticResource MyCalendarStyle1}" Height="35" Background="Transparent" SelectedDateChanged="DateFin_ArretTrav_SelectedDateChanged" FontSize="16" FontWeight="DemiBold" Foreground="#496FFF" Margin="0 0 80 10"  FontFamily="TIMES NEW ROMAN"  MinWidth="50" />
+                                                        <TextBlock x:Name="DateFin_ArretTrav_text" Visibility="Collapsed" FontSize="16"  Margin="5 0 5 10" FontWeight="DemiBold" Foreground="#496FFF" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                        <TextBlock Text="inclus." FontSize="16"   Foreground="#FF323131"  Margin="0 0 0 10" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                </WrapPanel>
+                                                <!--Prolongation-->
+                                                <WrapPanel Orientation="Horizontal"  Margin="0 0 0 0"/>
+                                                <!-- date de prolongation de travail-->
+                                                <StackPanel Orientation="Horizontal"  Margin="0 0 0 0"/>
+                                            </StackPanel>
+                                        </Border>
+                                        <!-- droits-->
+                                        <Border Grid.Row="2" Padding="5 10 5 25">
+                                            <TextBlock FontSize="16" Foreground="Black"
+                               Text="Ce certificat est délivré à l'intéressé(e) pour servir et valoir ce que de droit."
+                                FontWeight="DemiBold" FontFamily="TIMES NEW ROMAN" />
+                                        </Border>
+                                        <!--footer-->
+                                        <Border Grid.Row="3" Padding="0 0 200 0" BorderThickness="0 0 0 1" BorderBrush="Gray">
+                                            <TextBlock FontSize="16" Foreground="#496FFF" FontWeight="DemiBold" Text="Signature" HorizontalAlignment="Right" FontFamily="TIMES NEW ROMAN"/>
+                                        </Border>
+                                    </Grid>
+                                </Grid>
+
+
+                            </Border>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Prolongation"  Width="200" Style="{StaticResource tabItemStyle}"  HorizontalContentAlignment="Center">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition MinWidth="200"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition MinWidth="200"/>
+                            </Grid.ColumnDefinitions>
+                                
+                                <Border Padding="10" MaxWidth="610" MaxHeight="730" Background="White" Grid.Column="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                        <Image Source="/images/Capture_certificat.png" Grid.Row="1" />
+                                        <Canvas Grid.Row="0">
+                                        <!-- annuler-->
+                                        <Button   
+                  Style="{StaticResource DangerButtonStyle}" x:Name="Btn_Annuler1" Click="Btn_Annuler1_Click" Height="30" Width="75"  Canvas.Top="20" Canvas.Left="10" 
+                    Content="Annuler" FontFamily="TIMES NEW ROMAN" Cursor="Hand" Background="#FF6A737B" BorderBrush="#FF6A737B">
+                                            <Button.ToolTip>
+                                                <ToolTip>Annuler</ToolTip>
+                                            </Button.ToolTip>
+                                        </Button>
+                                        <!-- imprimer-->
+                                        <Button   
+                  Style="{StaticResource PrimaryButtonStyle}" x:Name="Btn_Print1" Content="Imprimer" Height="30" Width="75" Canvas.Top="20" 
+                    Canvas.Left="95" Click="Btn_Print1_Click" FontFamily="TIMES NEW ROMAN" Background="#FF0079FA">
+                                            <Button.ToolTip>
+                                                <ToolTip>Imprimer</ToolTip>
+                                            </Button.ToolTip>
+
+                                        </Button>
+                                    </Canvas>
+                                    <Grid Grid.Row="1" x:Name="Print_Certificate1" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="AUTO"/>
+                                                <RowDefinition Height="AUTO"/>
+                                                <RowDefinition Height="150"/>
+                                            </Grid.RowDefinitions>
+                                            <!-- titre-->
+                                        <Border Grid.Row="0">
+                                            <Border Height="50" BorderThickness="0 1 0 1" BorderBrush="Gray" >
+                                                <TextBlock Text="CERTIFICAT MEDICAL" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Foreground="#FF6E96FA" FontWeight="DemiBold" FontFamily="Times New Roman" FontStyle="Italic"/>
+                                            </Border>
+                                        </Border>
+                                        <!-- main -->
+                                        <Border Grid.Row="1" Padding="20" >
+                                           <!-- <Border.Background>
+                                                <ImageBrush ImageSource="/Controlers/Capture_certificat.png" Stretch="Uniform"/>
+                                            </Border.Background> -->
+                                            <StackPanel Orientation="Vertical">
+                                                <!--nom docteur-->
+                                                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                                                    <TextBlock Text="Je soussigné(e) Dr" FontSize="16" Margin="0 0 20 10" Foreground="#FF323131"  FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                    <TextBlock Text="BOUKARI Hasnae" FontSize="16"  Margin="0 0 0 10" FontWeight="DemiBold" Foreground="#496FFF" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                </StackPanel>
+                                                <!-- patient-->
+                                                <StackPanel Orientation="Horizontal"  Margin="0 0 0 0">
+                                                    <TextBlock Text="certifie que l'état de santé de:" VerticalAlignment="Center"  Margin="0 0 20 10" FontSize="16"  Foreground="#FF323131" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique" />
+                                                    <TextBox x:Name="Nom_patient1"   Margin="0 0 0 10" FontSize="16" FontFamily="TIMES NEW ROMAN" FontWeight="DemiBold" Foreground="#496FFF" Background="Transparent" 
+                                     BorderBrush="Transparent" Style="{StaticResource TextBoxWithPlaceholder1}" TextAlignment="Center" MinWidth="160" TouchUp="Nom_patient1_TouchUp"/>
+                                                </StackPanel>
+              
+                                                <!--Prolongation-->
+                                                <WrapPanel Orientation="Horizontal"  Margin="0 0 0 0">
+                                                    <TextBlock Text="2- Nécessite une prolongation d'arret de travail  de" FontSize="16"  Foreground="#FF323131" Margin="0 0 30 10" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                    <TextBox BorderBrush="Transparent" IsEnabled="False" Background="Transparent" FontSize="16" FontWeight="DemiBold" x:Name="NbrJours_Prolong1" Foreground="#496FFF" Margin="0 0 30 10" FontFamily="TIMES NEW ROMAN" Text="0" MinWidth="45" />
+                                                    <TextBlock Text="jours"   Foreground="#FF323131" FontSize="16"  Margin="0 0 0 10" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                </WrapPanel>
+                                                <!-- date de prolongation de travail-->
+                                                <WrapPanel Orientation="Horizontal"  Margin="0 0 0 0">
+                                                    <TextBlock Text="(sauf complications) du  " FontSize="16" Foreground="#FF323131"  Margin="0 0 20 10" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique" />
+                                                    <DatePicker x:Name="DateDebut_Prolong1"  Style="{DynamicResource DatePickerStyle1}"  CalendarStyle="{StaticResource MyCalendarStyle1}" Height="35" Background="Transparent" FontSize="16" FontWeight="DemiBold" Foreground="#496FFF" Margin="0 0 50 10" Text="......." FontFamily="TIMES NEW ROMAN" BorderBrush="Transparent" MinWidth="50" SelectedDateChanged="DateDebut_Prolong1_SelectedDateChanged"/>
+                                                    <TextBlock x:Name="DateDebut_Prolong1_text" Visibility="Collapsed" FontSize="16"  Margin="5 0 5 10" FontWeight="DemiBold" Foreground="#496FFF" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                    <TextBlock Text="au" FontSize="16"  Foreground="#FF323131"  Margin="0 0 30 10" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                    <DatePicker FontSize="16"  Style="{DynamicResource DatePickerStyle1}"  CalendarStyle="{StaticResource MyCalendarStyle1}" Height="35" Background="Transparent" x:Name="DateFin_Prolong1" SelectedDateChanged="DateFin_Prolong1_SelectedDateChanged" FontWeight="DemiBold" Foreground="#496FFF" Margin="0 0 80 10" FontFamily="TIMES NEW ROMAN" Text="..........." BorderBrush="Transparent" MinWidth="50"/>
+                                                    <TextBlock x:Name="DateFin_Prolong1_text" Visibility="Collapsed" FontSize="16"  Margin="5 0 5 10" FontWeight="DemiBold" Foreground="#496FFF" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                    <TextBlock Text="inclus." FontSize="16"   Foreground="#FF323131"   Margin="0 0 0 10" FontFamily="Times New Roman" FontStretch="Medium" FontStyle="Oblique"/>
+                                                </WrapPanel>
+                                            </StackPanel>
+                                        </Border>
+                                        <!-- droits-->
+                                        <Border Grid.Row="2" Padding="5 10 5 25">
+                                            <TextBlock FontSize="16"  Foreground="Black"
+                               Text="Ce certificat est délivré à l'intéressé(e) pour servir et valoir ce que de droit."
+                                FontWeight="DemiBold" FontFamily="TIMES NEW ROMAN" />
+                                        </Border>
+                                        <!--footer-->
+                                        <Border Grid.Row="3" Padding="0 20 200 0" BorderThickness="0 0 0 1" BorderBrush="Gray">
+                                            <TextBlock FontSize="16" Foreground="#496FFF" FontWeight="DemiBold" Text="Signature" HorizontalAlignment="Right" FontFamily="TIMES NEW ROMAN"/>
+                                        </Border>
+                                    </Grid>
+                                </Grid>
+
+
+                            </Border>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <!-- mariage-->
+            <TabItem  Header="C. Mariage" Width="200" Style="{StaticResource tabItemStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="700"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Button Content="imprimer" Width="120" Click="Button_Click_2" Height="40" Style="{StaticResource mainbutton}" FontFamily="TIMES NEW ROMAN" Background="#FF0079FA" Foreground="White" Margin="0 10" FontSize="15"/>
+                            <Button Content="annuler" Width="120" Height="40" Click="Button_Click_3" Style="{StaticResource mainbutton}" FontFamily="TIMES NEW ROMAN" Cursor="Hand" FontSize="15" Background="#FF6A737B" BorderBrush="#FF6A737B" Foreground="White"/>
+                        </StackPanel>
+                        <ScrollViewer Padding="0 20 0 0" VerticalScrollBarVisibility="Auto"  Grid.Column="1" HorizontalScrollBarVisibility="Disabled">
+                            <Grid MaxWidth="700" MaxHeight="730" x:Name="print_certifcat_maraige" Background="White" HorizontalAlignment="Left">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="4*"/>
+                                    <RowDefinition Height="0.3*"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="/images/Capture_certificat.png" Grid.Row="1"/>
+                                <Border BorderBrush="Gray" BorderThickness="0 1.5" Height="70" Margin="20">
+                                    <TextBlock  Foreground="Black" Text="شهادة البلوغ للزواج" FontFamily="Aldhabi" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <StackPanel Grid.Row="1"  FlowDirection="RightToLeft" Margin="20,20,20,20">
+                                    <!-- <StackPanel.Background>
+                                <ImageBrush ImageSource="/Controlers/Capture_certificat.png"  Stretch="Uniform"/>
+                        </StackPanel.Background> -->
+                                    <WrapPanel Grid.Row="1">
+                                        <TextBlock Text="أنا الموقعة أسفله الدكتورة : " FontSize="22" FontFamily="andalus"  Foreground="Black" VerticalAlignment="Center"/>
+                                        <TextBox Style="{StaticResource TextBoxWithPlaceholder1}" Text="بوكري حسناء" x:Name="Nom_Docteur" MinWidth="200" Foreground="Black" TextWrapping="Wrap" BorderBrush="Transparent" Background="Transparent"  TextBlock.FontSize="22" TextBlock.FontFamily="Andalus" TextBlock.FontStyle="Italic" TextBlock.FontStretch="ExtraExpanded"/>
+                                    </WrapPanel>
+                                    <WrapPanel>
+                                        <TextBlock Text="أشهد أنني قمت " FontSize="22" FontFamily="andalus" Foreground="Black" VerticalAlignment="Center"/>
+                                        <TextBox Style="{StaticResource TextBoxWithPlaceholder1}" x:Name="description" MinWidth="200" Foreground="Black" TextWrapping="Wrap" BorderBrush="Transparent" Background="Transparent" TextBlock.FontSize="22" TextBlock.FontFamily="Andalus" TextBlock.FontStyle="Italic" TextBlock.FontStretch="ExtraExpanded"/>
+
+                                    </WrapPanel>
+                                    <WrapPanel Margin="60 10 8 0" Orientation="Vertical">
+                                        <TextBlock Text=" بطلب من والي المعنية بالأمر السيد-ة- " FontSize="22" FontFamily="andalus" Foreground="Black"/>
+                                        <TextBox Style="{StaticResource TextBoxWithPlaceholder1}" x:Name="garant" MinWidth="200" Foreground="Black" TextWrapping="Wrap" BorderBrush="Transparent" Background="Transparent"  TextBlock.FontSize="22" TextBlock.FontFamily="Andalus" TextBlock.FontStyle="Italic" TextBlock.FontStretch="ExtraExpanded"/>
+                                    </WrapPanel>
+                                    <WrapPanel Margin="60 10 8 0" >
+                                        <TextBlock Text=" قمنا بفحص المسماة :  " FontSize="22" FontFamily="andalus" Foreground="Black" VerticalAlignment="Center"/>
+                                        <TextBox Style="{StaticResource TextBoxWithPlaceholder1}" x:Name="nom_patient_mariage" MinWidth="200" Foreground="Black" TextWrapping="Wrap" BorderBrush="Transparent" Background="Transparent"  TextBlock.FontSize="22" TextBlock.FontFamily="Andalus" TextBlock.FontStyle="Italic" TextBlock.FontStretch="ExtraExpanded"/>
+                                        <TextBlock Text="والحاملة للبطاقة الوطنية رقم : " VerticalAlignment="Center" FontSize="22" FontFamily="andalus" Foreground="Black"/>
+                                        <TextBox Style="{StaticResource TextBoxWithPlaceholder1}" x:Name="cin"  MinWidth="200" TextWrapping="Wrap" Foreground="Black" BorderBrush="Transparent" Background="Transparent"  TextBlock.FontSize="22" TextBlock.FontFamily="Andalus" TextBlock.FontStyle="Italic" TextBlock.FontStretch="ExtraExpanded"/>
+                                    </WrapPanel>
+                                    <TextBlock Text="وقد استنتجت الطبيبة من خلال الفحص السريري أن المعنية بالأمر قادرة على الزواج و أعبائه" TextAlignment="Center" Foreground="Black" FontSize="22" FontFamily="andalus"/>
+                                    <TextBlock Text="وقد سلمت هذه الشهادة للإدلاء بها عند الحاجة" FontSize="22" FontFamily="andalus" TextAlignment="Center" Foreground="Black"/>
+                                    <TextBlock Text="إمضاء الطبيبة" FontSize="22" FontFamily="andalus" TextAlignment="Center" Margin="0 20 0 0" Foreground="Black"/>
+                                </StackPanel>
+                                <Border BorderBrush="Gray" BorderThickness="0 1.5 0 0" Margin="10 0" Grid.Row="2"/>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+            <!-- Aptitude physique-->
+            <TabItem Header="C. Aptitude physique" Width="200" Style="{StaticResource tabItemStyle}" Height="26" Margin="-2,0,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="750"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button Content="imprimer" Width="120" Height="40" Click="Button_Click" Style="{StaticResource mainbutton}" FontFamily="TIMES NEW ROMAN" Background="#FF0079FA" Foreground="White" Margin="0 10" FontSize="15"/>
+                        <Button Content="annuler" Width="120" Height="40" Click="Button_Click_1" Style="{StaticResource mainbutton}" FontFamily="TIMES NEW ROMAN" Cursor="Hand" FontSize="15" Background="#FF6A737B" BorderBrush="#FF6A737B" Foreground="White"/>
+                    </StackPanel>
+                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Column="1">
+                    <Grid MaxWidth="740" MaxHeight="730"   x:Name="print_certificate_aptitude_Physique" Background="White" Grid.Column="1" HorizontalAlignment="Left">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height=".2*"/>
+
+                    </Grid.RowDefinitions>
+                            <Image Source="/images/Capture_certificat.png" Grid.Row="2"/> 
+                            <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="240"/>
+                            <ColumnDefinition Width="246"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/images/images.jpeg" Grid.Column="1"/>
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock   Foreground="Black" Text="Safi, le : " FontFamily="Times new roman" FontSize="16"/>
+                            <TextBlock  Foreground="Black" x:Name="date" FontFamily="cambria math" FontSize="16"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock  Foreground="Black" x:Name="nom_docteur" Text="Docteur Hasnaa BOUKARI" FontFamily="Times new roman" FontSize="16"/>
+                            <TextBlock Text="Médecine Générale"  Foreground="Black" FontFamily="Times new roman" FontSize="16"/>
+                            <TextBlock x:Name="addr" Text="Jnane Colonne 2, Safi"  Foreground="Black" FontFamily="Times new roman" FontSize="16"/>
+                            <TextBlock x:Name="tél" Text="Tél : 0524669889" FontFamily="Times new roman"  Foreground="Black" FontSize="16"/>
+                        </StackPanel>
+                    </Grid>
+                    <Border  Grid.Row="1" Height="70" BorderBrush="Gray" BorderThickness="0 1.5" Margin="10 0" VerticalAlignment="Center">
+                        <TextBlock  Foreground="Black" Text="CERTIFICAT D'APTITUDE PHYSIQUE" FontFamily="Trebuchet MS" FontSize="20" FontWeight="Black" FontStyle="Oblique" TextAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Left">
+                        <WrapPanel Margin="8 10 8 0 " >
+                            <TextBlock  Foreground="Black" Text="Je soussigné Dr. Hasnaa BOUKARI, certifiée aprés avoir examiné ce jour là la personne qui "
+                       FontSize="18 " FontFamily="Times new roman" FontWeight="Black" Margin="15 0 0 8"  TextWrapping="Wrap"/>
+                            <TextBlock Padding="0 8 0 0 " VerticalAlignment="Center" Text=" m'a déclaré se nommer " FontSize="18 " FontFamily="Times new roman" FontWeight="Black" Margin="15 0 0 8"  TextWrapping="Wrap" Foreground="Black"/>
+                                <TextBox x:Name="Nom_patient_Apptitude_phy" Background="Transparent"  Foreground="Black" FontSize="18" FontFamily="Times new roman" FontWeight="Black" MinWidth="150" Style="{StaticResource TextBoxWithPlaceholder1}" TextAlignment="Center" BorderBrush="Transparent" />
+                            <TextBlock Text="de CIN " Padding="0 8 0 0 " VerticalAlignment="Center" Foreground="Black" FontSize="18 " FontFamily="Times new roman" FontWeight="Black" Margin="15 0 0 8"/>
+                                <TextBox x:Name="CIN_patient_apptitude_phy" Background="Transparent"  Foreground="Black" FontSize="18 " FontFamily="Times new roman" FontWeight="Black" MinWidth="110" Style="{StaticResource TextBoxWithPlaceholder1}" TextAlignment="Center" BorderBrush="Transparent"/>
+                            <TextBlock FontSize="18"  Foreground="Black" FontFamily="Times new roman" FontWeight="Black"  Margin="15 0 0 8" TextWrapping="Wrap"
+                           Text="Qu'il (elle) ne présente aucun signe clinique d'affectation contagieuse aigue ou chronique et"/>
+                            <TextBlock FontSize="18"  Foreground="Black" FontFamily="Times new roman" FontWeight="Black"  Margin="0 0 0 0" TextWrapping="Wrap"
+                           Text=" est physique :"/>
+                        </WrapPanel>
+                        <StackPanel Grid.Row="2" Margin="0 20 0 0 ">
+                            <CheckBox Content="APTE" x:Name="apte" FontSize="16 " FontFamily="Times new roman" FontWeight="Black" Width="500" Margin="0 0 0 10"/>
+                            <CheckBox Content="INAPTE" x:Name="inapte" FontSize="16 " FontFamily="Times new roman" FontWeight="Black" Width="500"/>
+                        </StackPanel>
+                        <TextBlock Text="Certificat délivré pour servir et valoir ce que de droit" FontSize="18 " FontFamily="Times new roman" FontWeight="Black" Margin="30 20 0 0" Foreground="Black"/>
+                            <TextBox x:Name="remarque_supp"  Style="{StaticResource TextBoxWithPlaceholder1}" Margin="10" FontSize="17 " FontFamily="Times new roman" FontWeight="Black" TextWrapping="Wrap" Foreground="Black" Background="Transparent" BorderBrush="Transparent"/>
+                        <TextBlock Text="Signé : Dr. Hasnaa BOUKARY" FontSize="18 " FontFamily="Times new roman" FontWeight="Black" 
+                       HorizontalAlignment="Center" Margin="0 30 0 0" Foreground="Black"/>
+                    </StackPanel>
+                    <Border BorderThickness="0 1.5 0 0 " Grid.Row="3" BorderBrush="Gray" Margin="10 0" Style="{StaticResource  border_certificat}">
+
+                    </Border>
+                </Grid>
+                        </ScrollViewer>
+                    </Grid>
+            </TabItem>
+            <!--les act Mariage -->
+            <TabItem Header="C. Acte de Mariage" Width="200" Style="{StaticResource tabItemStyle}" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="725"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button Content="imprimer" Height="40" Style="{StaticResource mainbutton}" Width="120" Click="Button_Click_4" FontFamily="TIMES NEW ROMAN" Background="#FF0079FA" Foreground="White" Margin="0 10" FontSize="15"/>
+                        <Button Content="annuler" Height="40" Style="{StaticResource mainbutton}" Width="120" Click="Button_Click_5" FontFamily="TIMES NEW ROMAN" Cursor="Hand" FontSize="15" Background="#FF6A737B" BorderBrush="#FF6A737B" Foreground="White"/>
+                    </StackPanel>
+                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <Grid  MaxWidth="720 " MaxHeight="730" x:Name="print_certificat_act_mariage" Background="White" Grid.Column="1" HorizontalAlignment="Left">
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="0.4*"/>
+                            <RowDefinition Height="1.2*"/>
+                            <RowDefinition Height="0.1*"/>
+                        </Grid.RowDefinitions>
+                            <Image Source="/images/Capture_certificat.png" Grid.Row="1"/>
+                            <Border Height="120" BorderThickness="0 1.5" BorderBrush="Gray" Margin="10 0">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="شهادة طبية" FontFamily="Aldhabi" FontSize="40" HorizontalAlignment="Center" Foreground="Black"/>
+                                <TextBlock Text="خاصة بإبرام عقد الزواج" FontFamily="Aldhabi" FontSize="40" Foreground="Black"/>
+                            </StackPanel>
+                        </Border>
+                        <StackPanel Grid.Row="1" Margin="0,30,20,0" FlowDirection="RightToLeft">
+                           <!--  <StackPanel.Background>
+                                <ImageBrush ImageSource="/Controlers/Capture_certificat.png"  Stretch="Uniform"/>
+                            </StackPanel.Background> -->
+                            <WrapPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft" VerticalAlignment="Top" >
+                                <TextBlock Text="أنا الموقع أسفله :" VerticalAlignment="Center"  FontSize="22" FontFamily="Andalus" FontStyle="Italic" Foreground="Black" FontStretch="ExtraExpanded" />
+                                <TextBox Style="{StaticResource TextBoxWithPlaceholder1}" MinWidth="490" TextWrapping="Wrap" BorderBrush="Transparent" Background="Transparent" TextBlock.FontSize="22" 
+                         TextBlock.FontFamily="Andalus" TextBlock.FontStyle="Italic" Text="د حسناء بوكري" TextBlock.FontStretch="ExtraExpanded" Foreground="Black" x:Name="docteur"/>
+
+
+                                <TextBlock Text="أشهد أني فحصت يومه : " VerticalAlignment="Center"  FontSize="22" FontFamily="Andalus" Foreground="Black" FontStyle="Italic" FontStretch="ExtraExpanded"/>
+                                    <TextBox Style="{StaticResource TextBoxWithPlaceholder1}" Visibility="Collapsed" x:Name="date_mariage_act" MinWidth="320" TextWrapping="Wrap" Foreground="Black" BorderBrush="Transparent" Background="Transparent" TextBlock.FontSize="22" TextBlock.FontFamily="Andalus" TextBlock.FontStyle="Italic" TextBlock.FontStretch="ExtraExpanded"/>
+                                        <DatePicker    Style="{DynamicResource DatePickerStyle1}" x:Name="date_mariage_act1"  CalendarStyle="{StaticResource MyCalendarStyle1}" Height="35" Background="Transparent" FontSize="16" FontWeight="DemiBold" Foreground="#496FFF" Margin="0 0 30 10"  MinWidth="50" SelectedDateChanged="DateDebut_ArretTrav_SelectedDateChanged"/>
+                                        <TextBlock Text="المسمى أو المسماة : " VerticalAlignment="Center" FontSize="22" FontFamily="Andalus" Foreground="Black" FontStyle="Italic" FontStretch="ExtraExpanded"/>
+                                <TextBox Style="{StaticResource TextBoxWithPlaceholder1}" x:Name="patient_apt_mariage" MinWidth="380" Foreground="Black" TextWrapping="Wrap" BorderBrush="Transparent" Background="Transparent" TextBlock.FontSize="22" TextBlock.FontFamily="Andalus" TextAlignment="Center" TextBlock.FontStyle="Italic" TextBlock.FontStretch="ExtraExpanded"/>
+
+
+                                <TextBlock Text=" رقم بطاقة التعريف الوطنية إن وجدت : " VerticalAlignment="Center" FontSize="22" FontFamily="Andalus" Foreground="Black" FontStyle="Italic" FontStretch="ExtraExpanded"/>
+                                <TextBox Style="{StaticResource TextBoxWithPlaceholder1}" MinWidth="200" TextAlignment="Center" x:Name="cin_apt_mariage"  TextWrapping="Wrap" Foreground="Black" BorderBrush="Transparent" Background="Transparent"  TextBlock.FontSize="22" TextBlock.FontFamily="Andalus" TextBlock.FontStyle="Italic" TextBlock.FontStretch="ExtraExpanded"/>
+
+                                <TextBlock Text="وتبين بعد البحث السريري أن المعني بالأمر لا تظهر عليه علامة مرض معد ومنه تستنتج الطبيبة أن :" Foreground="Black"  FontSize="22" FontFamily="Andalus" FontStyle="Italic" FontStretch="ExtraExpanded" Margin="30 0 0 0" MinWidth="600"/>
+
+
+                                <TextBox Style="{StaticResource TextBoxWithPlaceholder1}" Padding="0 0 20 0" x:Name="description_apt_mariage"  MinWidth="660" Foreground="Black" TextAlignment="Center" TextWrapping="Wrap" BorderBrush="Transparent" Background="Transparent" TextBlock.FontSize="22" TextBlock.FontFamily="Andalus" TextBlock.FontStyle="Italic" TextBlock.FontStretch="ExtraExpanded"/>
+
+
+                            </WrapPanel>
+                            <TextBlock Text=" .وسلمت له هذه الشهادة للإدلاء بها قصد الزواج" Height="50" Foreground="Black" FontSize="22" FontFamily="Andalus" FontStyle="Italic" TextAlignment="Center" Margin="0 15" FontStretch="ExtraExpanded"/>
+                        </StackPanel>
+                        <Border BorderBrush="Gray" BorderThickness="0 1.5 0 0 " Grid.Row="2" Margin="10 0">
+
+                        </Border>
+                    </Grid>
+                        </ScrollViewer>
+                    </Grid>
+            </TabItem>
+            <!--Historiques-->
+            <TabItem Header="Historiques" Width="200" Style="{StaticResource tabItemStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                   
+                        <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Grid.Column="0" Content="maladie" Style="{StaticResource radio}" Margin="10" IsChecked="True" x:Name="check_medical" Checked="check_medical_Checked"></RadioButton>
+                            <RadioButton Grid.Column="1" Content="aptitude physique"  Style="{StaticResource radio}" Margin="10" x:Name="check_aptitude_physique" Checked="check_aptitude_physique_Checked"/>
+                            <RadioButton Grid.Column="2" Content="aptitude mariage"  Style="{StaticResource radio}" Margin="10" x:Name="check_aptitude_mariage"  Checked="check_aptitude_mariage_Checked"/>
+                            <RadioButton Grid.Column="3" Content="mariage"  Style="{StaticResource radio}" Margin="10" x:Name="check_mariage" Checked="check_mariage_Checked"/>
+
+                    </Grid>
+                    
+                    <Grid Grid.Row="1" x:Name="grid">
+                        
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+    </Border>
+</UserControl>
