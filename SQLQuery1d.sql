@@ -1,1 +1,0 @@
-﻿Select * from RendezVous R join Patient P on R.id_patient=P.id_patient 
